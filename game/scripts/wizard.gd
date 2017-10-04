@@ -65,6 +65,8 @@ func _process(delta):
 			fire.show()
 			fire_anim.play("Burn")
 			atacando = true
+			fire.set_frame(0)
+			print("Foguinho!")
 	
 	if (!Input.is_action_pressed("ATTACK")):
 		fire_anim.stop()
