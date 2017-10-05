@@ -14,8 +14,8 @@ script/script = ExtResource( 2 )
 
 [node name="Attack" parent="Wizard" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1.80499, 20 )
+transform/pos = Vector2( 1.80499, 9.99999 )
 transform/scale = Vector2( 0.344768, 0.344768 )
-offset = Vector2( 0, -100 )
+offset = Vector2( 0, -50 )
 
 

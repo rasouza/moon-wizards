@@ -20,6 +20,7 @@ func _ready():
 func _process(delta):
 	var pos = self.get_pos()
 	
+	
 	if (Input.is_action_pressed("ui_right")):
 		pos.x += 1
 		if (!andando || direcao != DIREITA):
@@ -51,7 +52,7 @@ func _process(delta):
 		andando = false
 	
 	if (Input.is_action_pressed("ATTACK")):
-		var mouse_dir = (get_viewport().get_mouse_pos() - pos).normalized()
+		var mouse_dir = (get_viewport().get_mouse_pos() - self.get_global_pos()).normalized()
 		fire.set_pos(mouse_dir*40)
 		
 		
