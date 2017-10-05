@@ -1,0 +1,125 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://art/tileset/dungeon2.png" type="Texture" id=1]
+
+[node name="Tiles" type="Node"]
+
+[node name="d00" type="Sprite" parent="."]
+
+transform/pos = Vector2( -34.4547, -39.1265 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="d01" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -37.9044 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 34, 0, 16, 16 )
+
+[node name="d02" type="Sprite" parent="."]
+
+transform/pos = Vector2( 42.9224, -38.2506 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 68, 0, 16, 16 )
+
+[node name="d10" type="Sprite" parent="."]
+
+transform/pos = Vector2( -17.2274, -19.8553 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 17, 17, 16, 16 )
+
+[node name="d11" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0.875961, -19.8553 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 34, 17, 16, 16 )
+
+[node name="d12" type="Sprite" parent="."]
+
+transform/pos = Vector2( 21.6072, -19.8553 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 51, 17, 16, 16 )
+
+[node name="d20" type="Sprite" parent="."]
+
+transform/pos = Vector2( -35.9147, -0.583977 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 34, 16, 16 )
+
+[node name="d21" type="Sprite" parent="."]
+
+transform/pos = Vector2( -17.5193, 0 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 17, 34, 16, 16 )
+
+[node name="d22" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 34, 34, 16, 16 )
+
+[node name="d23" type="Sprite" parent="."]
+
+transform/pos = Vector2( 21.8992, 0 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 51, 34, 16, 16 )
+
+[node name="d24" type="Sprite" parent="."]
+
+transform/pos = Vector2( 43.5064, 0 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 68, 34, 16, 16 )
+
+[node name="d30" type="Sprite" parent="."]
+
+transform/pos = Vector2( -17.2274, 19.5633 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 17, 51, 16, 16 )
+
+[node name="d31" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0.875961, 19.5633 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 34, 51, 16, 16 )
+
+[node name="d32" type="Sprite" parent="."]
+
+transform/pos = Vector2( 21.6072, 19.5633 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 51, 51, 16, 16 )
+
+[node name="d40" type="Sprite" parent="."]
+
+transform/pos = Vector2( -33.5787, 37.3746 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 68, 16, 16 )
+
+[node name="d41" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 36.7906 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 34, 68, 16, 16 )
+
+[node name="d42" type="Sprite" parent="."]
+
+transform/pos = Vector2( 41.4624, 35.0387 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 68, 68, 16, 16 )
+
+
