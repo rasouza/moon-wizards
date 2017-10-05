@@ -20,6 +20,7 @@ func _ready():
 func _process(delta):
 	var pos = self.get_pos()
 	
+	
 	if (Input.is_action_pressed("ui_right")):
 		pos.x += 1
 		if (!andando || direcao != DIREITA):
@@ -51,16 +52,10 @@ func _process(delta):
 		andando = false
 	
 	if (Input.is_action_pressed("ATTACK")):
-		fire.set_draw_behind_parent(false)
-		if (direcao == DIREITA):
-			fire.set_pos(Vector2(40, -10))
-		if (direcao == ESQUERDA):
-			fire.set_pos(Vector2(-40, -10))
-		if (direcao == ACIMA):
-			fire.set_pos(Vector2(0, -40))
-			fire.set_draw_behind_parent(true)
-		if (direcao == ABAIXO):
-			fire.set_pos(Vector2(0, 0))
+		var mouse_dir = (get_viewport().get_mouse_pos() - self.get_global_pos()).normalized()
+		fire.set_pos(mouse_dir*40)
+		
+		
 		if (!atacando):
 			fire.show()
 			fire_anim.play("Burn")
