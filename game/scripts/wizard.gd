@@ -1,103 +1,66 @@
 extends Sprite
 
-const DIREITA = 1
-const ESQUERDA = 2
-const ACIMA = 3
-const ABAIXO = 4
-const DIREITA_ACIMA = 5
-const DIREITA_ABAIXO = 6
-const ESQUERDA_ACIMA = 7
-const ESQUERDA_ABAIXO = 8
+const SPEED = 100
 
-var direcao = DIREITA
-var andando = false
+var dir = Vector2()
 var atacando = false
-onready var wizard = get_node("Wizard")
-onready var fire = get_node("Attack")
-onready var wizard_anim = get_node("AnimationPlayer")
-onready var fire_anim = get_node("Attack/AnimationPlayer")
+var last_anim = "walk_right"
+var active_attack
+
+onready var anim = get_node("WizardAnim")
+onready var attack1 = get_node("Attack1")
+
 
 func _ready():
-	self.set_process(true)
-	wizard_anim.play("walk_right")
+	active_attack = attack1
+	
+	self.set_fixed_process(true)
+	self.set_process_input(true)
+	anim.play(last_anim)
 
-func _process(delta):
-	var pos = self.get_pos()
+func _input(event):
+	if(event.is_action_pressed("ui_right")):
+		dir += Vector2(1, 0)
+		last_anim = "walk_right"
+		anim.play("walk_right")
+	if(event.is_action_pressed("ui_left")):
+		dir += Vector2(-1, 0)
+		last_anim = "walk_left"
+		anim.play("walk_left")
+	if(event.is_action_pressed("ui_up")):
+		dir += Vector2(0, -1)
+		last_anim = "walk_up"
+		anim.play("walk_up")
+	if(event.is_action_pressed("ui_down")):
+		dir += Vector2(0, 1)
+		last_anim = "walk_down"
+		anim.play("walk_down")
 	
-	if (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_up")):
-		pos.x += 1
-		pos.y -= 1
-		if (!andando || direcao != DIREITA_ACIMA):
-			direcao = DIREITA_ACIMA
-			wizard_anim.play("walk_right")
-			andando = true
-	elif (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down")):
-		pos.x += 1
-		pos.y += 1
-		if (!andando || direcao != DIREITA_ABAIXO):
-			direcao = DIREITA_ABAIXO
-			wizard_anim.play("walk_right")
-			andando = true
-	elif (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up")):
-		pos.x -= 1
-		pos.y -= 1
-		if (!andando || direcao != ESQUERDA_ACIMA):
-			direcao = ESQUERDA_ACIMA
-			wizard_anim.play("walk_left")
-			andando = true
-	elif (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_down")):
-		pos.x -= 1
-		pos.y += 1
-		if (!andando || direcao != ESQUERDA_ABAIXO):
-			direcao = ESQUERDA_ABAIXO
-			wizard_anim.play("walk_left")
-			andando = true
-	elif (Input.is_action_pressed("ui_right")):
-		pos.x += 1
-		if (!andando || direcao != DIREITA):
-			direcao = DIREITA
-			wizard_anim.play("walk_right")
-			andando = true
-	elif (Input.is_action_pressed("ui_left")):
-		pos.x -= 1
-		if (!andando || direcao != ESQUERDA):
-			direcao = ESQUERDA
-			wizard_anim.play("walk_left")
-			andando = true
-	elif (Input.is_action_pressed("ui_up")):
-		pos.y -= 1
-		if (!andando || direcao != ACIMA):
-			direcao = ACIMA
-			wizard_anim.play("walk_up")
-			andando = true
-	elif (Input.is_action_pressed("ui_down")):
-		pos.y += 1
-		if (!andando || direcao != ABAIXO):
-			direcao = ABAIXO
-			wizard_anim.play("walk_down")
-			andando = true
-	elif (!Input.is_action_pressed("ui_right") &&
-		!Input.is_action_pressed("ui_left") &&
-		!Input.is_action_pressed("ui_up") &&
-		!Input.is_action_pressed("ui_down")):
-		andando = false
+	if(event.is_action_released("ui_right")):
+		dir -= Vector2(1, 0)
+	if(event.is_action_released("ui_left")):
+		dir -= Vector2(-1, 0)
+	if(event.is_action_released("ui_up")):
+		dir -= Vector2(0, -1)
+	if(event.is_action_released("ui_down")):
+		dir -= Vector2(0, 1)
 	
-	if (Input.is_action_pressed("ATTACK")):
-		var mouse_dir = (get_viewport().get_mouse_pos() - self.get_global_pos()).normalized()
-		fire.set_pos(mouse_dir*40)
-		
-		
-		if (!atacando):
-			fire.show()
-			fire_anim.play("Burn")
-			atacando = true
-			fire.set_frame(0)
-			print("Foguinho!")
+	if (event.is_action_pressed("ui_attack")):
+		var global_pos = self.get_global_pos()
+		var mouse = get_viewport().get_mouse_pos()
+		var attack_dir = (mouse - global_pos).normalized()
+		if(!atacando):
+			anim.play("attack")
+		atacando = true
+		active_attack.attack()
 	
-	#if (!Input.is_action_pressed("ATTACK")):
-	else:
-		fire_anim.stop()
-		fire.hide()
+	if (event.is_action_released("ui_attack")):
 		atacando = false
-	
-	self.set_pos(pos)
+		active_attack.stop();
+
+func _fixed_process(delta):
+	var motion = dir * SPEED * delta
+	set_pos(get_pos() + motion)
+
+func _on_AnimationPlayer_finished():
+	if (anim.get_current_animation() == "attack"): anim.play(last_anim)
