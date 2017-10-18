@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://art/characters/wizard.png" type="Texture" id=1]
 [ext_resource path="res://game/scripts/wizard.gd" type="Script" id=2]
 [ext_resource path="res://game/sprites/Attack1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/sprites/Barrier.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -134,6 +135,11 @@ autoplay = ""
 [node name="Attack1" parent="." instance=ExtResource( 3 )]
 
 visibility/visible = false
+
+[node name="Barrier" parent="." instance=ExtResource( 4 )]
+
+visibility/visible = false
+transform/pos = Vector2( -17.959, -33.5018 )
 
 [connection signal="finished" from="WizardAnim" to="." method="_on_AnimationPlayer_finished"]
 
