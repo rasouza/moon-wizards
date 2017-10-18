@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=1]
+[gd_scene load_steps=68 format=1]
 
 [ext_resource path="res://art/tileset/atlas1/agua1.png" type="Texture" id=1]
 [ext_resource path="res://art/tileset/atlas1/agua2.png" type="Texture" id=2]
@@ -65,326 +65,398 @@
 [ext_resource path="res://art/tileset/atlas1/terra3.png" type="Texture" id=63]
 [ext_resource path="res://art/tileset/atlas1/tronco1.png" type="Texture" id=64]
 
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.7386, 15.7736 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.1686, 15.9242 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.8051, 16.029 )
+
 [node name="Node" type="Node"]
 
 [node name="agua1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 26.4737, 311.811 )
 texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="agua1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="agua1/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 [node name="agua2" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 22.8637, 262.174 )
 texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="agua2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="agua2/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
 
 [node name="agua3" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 21.9612, 219.756 )
 texture = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="agua3"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="agua3/StaticBody2D"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
 
 [node name="chao1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 648.295, 186.364 )
 texture = ExtResource( 4 )
 
 [node name="chao10" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 428.988, -64.5306 )
 texture = ExtResource( 5 )
 
 [node name="chao11" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 382.058, -50.9931 )
 texture = ExtResource( 6 )
 
 [node name="chao12" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 318.883, -60.0181 )
 texture = ExtResource( 7 )
 
 [node name="chao13" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 253.001, -47.3831 )
 texture = ExtResource( 8 )
 
 [node name="chao14" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 196.143, -66.3356 )
 texture = ExtResource( 9 )
 
 [node name="chao15" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 142.896, -34.7482 )
 texture = ExtResource( 10 )
 
 [node name="chao16" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 631.689, 337.493 )
 texture = ExtResource( 11 )
 
 [node name="chao17" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 583.173, 331.612 )
 texture = ExtResource( 12 )
 
 [node name="chao2" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 450.857, 353.665 )
 texture = ExtResource( 13 )
 
 [node name="chao3" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 325.156, 355.87 )
 texture = ExtResource( 14 )
 
 [node name="chao4" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 178.873, 361.016 )
 texture = ExtResource( 15 )
 
 [node name="chao5" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 92.8679, 336.023 )
 texture = ExtResource( 16 )
 
 [node name="chao6" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 85.517, 196.356 )
 texture = ExtResource( 17 )
 
 [node name="chao7" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 402.341, 121.376 )
 texture = ExtResource( 18 )
 
 [node name="chao8" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 354.56, 58.1587 )
 texture = ExtResource( 19 )
 
 [node name="chao9" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 81.1065, 153.72 )
 texture = ExtResource( 20 )
 
 [node name="escada1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 81.8416, 94.1781 )
 texture = ExtResource( 21 )
 
 [node name="escada2" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 98.7486, 11.1129 )
 texture = ExtResource( 22 )
 
 [node name="escada3" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 628.749, -38.8732 )
 texture = ExtResource( 23 )
 
 [node name="escada4" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 639.04, 58.8938 )
 texture = ExtResource( 24 )
 
 [node name="escada5" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 601.55, 23.6094 )
 texture = ExtResource( 25 )
 
 [node name="escada6" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 642.715, 116.231 )
 texture = ExtResource( 26 )
 
 [node name="escada7" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 501.578, 335.288 )
 texture = ExtResource( 27 )
 
 [node name="grama1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 273.7, 333.082 )
 texture = ExtResource( 28 )
 
 [node name="grama10" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 203.131, 305.149 )
 texture = ExtResource( 29 )
 
 [node name="grama11" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 106.1, 280.891 )
 texture = ExtResource( 30 )
 
 [node name="grama12" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 238.416, 265.454 )
 texture = ExtResource( 31 )
 
 [node name="grama13" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 522.896, 272.07 )
 texture = ExtResource( 32 )
 
 [node name="grama14" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 616.744, 259.067 )
 texture = ExtResource( 33 )
 
 [node name="grama15" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 542.844, 103.732 )
 texture = ExtResource( 34 )
 
 [node name="grama16" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 525.454, 7.89562 )
 texture = ExtResource( 35 )
 
 [node name="grama17" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 472.91, 278.686 )
 texture = ExtResource( 36 )
 
 [node name="grama18" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 383.229, 302.944 )
 texture = ExtResource( 37 )
 
 [node name="grama19" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 311.19, 266.924 )
 texture = ExtResource( 38 )
 
 [node name="grama2" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 238.702, 216.132 )
 texture = ExtResource( 39 )
 
 [node name="grama20" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 151.896, 216.62 )
 texture = ExtResource( 40 )
 
 [node name="grama21" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 225.535, 51.7863 )
 texture = ExtResource( 41 )
 
 [node name="grama22" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 272.839, -11.6113 )
 texture = ExtResource( 42 )
 
 [node name="grama23" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 360.133, -18.9264 )
 texture = ExtResource( 43 )
 
 [node name="grama24" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 152.384, 112.258 )
 texture = ExtResource( 44 )
 
 [node name="grama25" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 421.58, 145.42 )
 texture = ExtResource( 45 )
 
 [node name="grama3" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 334.286, 166.877 )
 texture = ExtResource( 46 )
 
 [node name="grama4" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 273.815, 159.562 )
 texture = ExtResource( 47 )
 
 [node name="grama5" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 176.28, 28.8656 )
 texture = ExtResource( 48 )
 
 [node name="grama6" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 379.152, 165.902 )
 texture = ExtResource( 49 )
 
 [node name="grama7" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 226.51, 127.376 )
 texture = ExtResource( 50 )
 
 [node name="grama8" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 267.475, 37.1561 )
 texture = ExtResource( 51 )
 
 [node name="grama9" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 478.638, 70.8055 )
 texture = ExtResource( 52 )
 
 [node name="moita1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 544.474, 185.897 )
 texture = ExtResource( 53 )
 
 [node name="pantano1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 164.576, 170.291 )
 texture = ExtResource( 54 )
 
 [node name="pantano2" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 300.149, 200.039 )
 texture = ExtResource( 55 )
 
 [node name="pantano3" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 458.643, 113.233 )
 texture = ExtResource( 56 )
 
 [node name="pantano4" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 418.166, 9.35864 )
 texture = ExtResource( 57 )
 
 [node name="pantano5" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 468.884, 165.902 )
 texture = ExtResource( 58 )
 
 [node name="pedra1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 206.028, 183.946 )
 texture = ExtResource( 59 )
 
 [node name="pedra2" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 408.413, 221.984 )
 texture = ExtResource( 60 )
 
 [node name="terra1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 314.292, -11.1237 )
 texture = ExtResource( 61 )
 
 [node name="terra2" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 211.392, -3.32088 )
 texture = ExtResource( 62 )
 
 [node name="terra3" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 193.836, 85.4358 )
 texture = ExtResource( 63 )
 
 [node name="tronco1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 297.223, 101.529 )
+transform/pos = Vector2( 722.443, 117.041 )
 texture = ExtResource( 64 )
 
 
