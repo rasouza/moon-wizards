@@ -81,10 +81,6 @@ func ataque(delta):
 			direcao = ACIMA
 
 func afastar(delta):
-	if (vetor_vel_afastamento == null):
-		vetor_vel_afastamento = self.get_pos() - wizard.get_pos()
-		vetor_vel_afastamento = vetor_vel_afastamento.normalized()
-
 	self.set_pos(self.get_pos() + vetor_vel_afastamento*delta*veloc_afastamento)
 
 func set_tempo_paralisado(t):
@@ -94,7 +90,8 @@ func set_veloc_movimento(v):
 	veloc_movimento = v
 
 func sofreu_ataque():
-	print(self.get_name() + " sofreu ataque")
+	vetor_vel_afastamento = self.get_pos() - wizard.get_pos()
+	vetor_vel_afastamento = vetor_vel_afastamento.normalized()
 	estado = AFASTANDO
 	timer.set_wait_time(0.15)
 	timer.connect("timeout", self, "_timer_afastando")
@@ -102,7 +99,6 @@ func sofreu_ataque():
 	
 func _timer_afastando():
 	timer.disconnect("timeout", self, "_timer_afastando")
-	print(self.get_name() + " paralisado por " + str(tempo_paralisado))
 	estado = PARALISADO
 	timer.set_wait_time(tempo_paralisado)
 	timer.connect("timeout", self, "_timer_paralisado")
@@ -110,6 +106,4 @@ func _timer_afastando():
 
 func _timer_paralisado():
 	timer.disconnect("timeout", self, "_timer_paralisado")
-	print(self.get_name() + " atacando de novo")
-	
 	estado = ATACANDO
