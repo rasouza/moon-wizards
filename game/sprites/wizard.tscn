@@ -112,7 +112,7 @@ offset = Vector2( 0, -32 )
 flip_h = true
 vframes = 8
 hframes = 8
-frame = 36
+frame = 4
 region_rect = Rect2( 0, 0, 32, 48 )
 script/script = ExtResource( 2 )
 

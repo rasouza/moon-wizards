@@ -5,11 +5,11 @@ const SPEED = 100
 var dir = Vector2()
 var atacando = false
 var last_anim = "walk_right"
+var active_anim = "walk_right"
 var active_attack
 
 onready var anim = get_node("WizardAnim")
 onready var attack1 = get_node("Attack1")
-
 
 func _ready():
 	active_attack = attack1
@@ -24,37 +24,50 @@ func _input(event):
 	ataque(event)
 
 func movimento(event):
-	if(event.is_action_pressed("ui_right")):
-		dir += Vector2(1, 0)
-	if(event.is_action_pressed("ui_left")):
-		dir += Vector2(-1, 0)
-	if(event.is_action_pressed("ui_up")):
-		dir += Vector2(0, -1)
-	if(event.is_action_pressed("ui_down")):
-		dir += Vector2(0, 1)
+	if(event.is_action_pressed("ui_right")): dir += Vector2(1, 0)
+	if(event.is_action_pressed("ui_left")): dir += Vector2(-1, 0)
+	if(event.is_action_pressed("ui_up")): dir += Vector2(0, -1)
+	if(event.is_action_pressed("ui_down")): dir += Vector2(0, 1)
 	
-	if(event.is_action_released("ui_right")):
-		dir -= Vector2(1, 0)
-	if(event.is_action_released("ui_left")):
-		dir -= Vector2(-1, 0)
-	if(event.is_action_released("ui_up")):
-		dir -= Vector2(0, -1)
-	if(event.is_action_released("ui_down")):
-		dir -= Vector2(0, 1)
+	if(event.is_action_released("ui_right")): dir -= Vector2(1, 0)
+	if(event.is_action_released("ui_left")): dir -= Vector2(-1, 0)
+	if(event.is_action_released("ui_up")): dir -= Vector2(0, -1)
+	if(event.is_action_released("ui_down")): dir -= Vector2(0, 1)
 
 func animacao(event):
 	if(event.is_action_pressed("ui_right")):
-		last_anim = "walk_right"
-		anim.play("walk_right")
+		last_anim = active_anim
+		active_anim = "walk_right"
+		anim.play(active_anim)
+		
 	if(event.is_action_pressed("ui_left")):
-		last_anim = "walk_left"
-		anim.play("walk_left")
+		last_anim = active_anim
+		active_anim = "walk_left"
+		anim.play(active_anim)
+		
 	if(event.is_action_pressed("ui_up")):
-		last_anim = "walk_up"
-		anim.play("walk_up")
+		last_anim = active_anim
+		active_anim = "walk_up"
+		anim.play(active_anim)
+		
 	if(event.is_action_pressed("ui_down")):
-		last_anim = "walk_down"
-		anim.play("walk_down")
+		last_anim = active_anim
+		active_anim = "walk_down"
+		anim.play(active_anim)
+		
+	if(event.is_action_released("ui_right") and active_anim == "walk_right"):
+		active_anim = last_anim
+		anim.play(active_anim)
+	if(event.is_action_released("ui_left") and active_anim == "walk_left"):
+		active_anim = last_anim
+		anim.play(active_anim)
+	if(event.is_action_released("ui_up") and active_anim == "walk_up"):
+		active_anim = last_anim
+		anim.play(active_anim)
+	if(event.is_action_released("ui_down") and active_anim == "walk_down"):
+		active_anim = last_anim
+		anim.play(active_anim)
+	
 
 func ataque(event):
 	if (event.is_action_pressed("ui_attack")):
