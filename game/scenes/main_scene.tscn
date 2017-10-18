@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://game/sprites/wizard.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/scripts/wizard.gd" type="Script" id=2]
-[ext_resource path="res://game/sprites/Burn.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game/sprites/Bat.tscn" type="PackedScene" id=4]
-[ext_resource path="res://game/sprites/Pidgeon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/sprites/Bat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/sprites/Pidgeon.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,20 +11,13 @@ transform/pos = Vector2( 78.6703, 66.4819 )
 [node name="Wizard" parent="." instance=ExtResource( 1 )]
 
 transform/pos = Vector2( 943.746, 338.424 )
-script/script = ExtResource( 2 )
 
-[node name="Attack" parent="Wizard" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 1.80499, 9.99999 )
-transform/scale = Vector2( 0.344768, 0.344768 )
-offset = Vector2( 0, -50 )
-
-[node name="Bat" parent="." instance=ExtResource( 4 )]
+[node name="Bat" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 102.173, 47.4057 )
 transform/scale = Vector2( 1.59837, 1.42119 )
 
-[node name="Raven" parent="." instance=ExtResource( 5 )]
+[node name="Raven" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 159.341, 73.8172 )
 transform/scale = Vector2( 1.09142, 0.960651 )
