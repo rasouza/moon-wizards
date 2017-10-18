@@ -89,7 +89,7 @@ func _process(delta):
 		
 		if (!atacando):
 			fire.show()
-			fire_anim.play("Burn")
+			fire_anim.play("start_Burn")
 			atacando = true
 			fire.set_frame(0)
 			print("Foguinho!")
