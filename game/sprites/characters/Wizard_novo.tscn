@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://game/scripts/wizard_novo.gd" type="Script" id=1]
+[ext_resource path="res://game/scripts/characters/wizard_novo.gd" type="Script" id=1]
 [ext_resource path="res://art/characters/wizard.png" type="Texture" id=2]
 [ext_resource path="res://game/animations/wizard/attack.tres" type="Animation" id=3]
 [ext_resource path="res://game/animations/wizard/walk_down.tres" type="Animation" id=4]
@@ -8,7 +8,15 @@
 [ext_resource path="res://game/animations/wizard/walk_right.tres" type="Animation" id=6]
 [ext_resource path="res://game/animations/wizard/walk_up.tres" type="Animation" id=7]
 
-[node name="Wizard" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 11.1834
+height = 13.0177
+
+[node name="Wizard" type="Node2D" groups=[
+"player",
+]]
 
 [node name="Body" type="KinematicBody2D" parent="."]
 
@@ -17,6 +25,26 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="Body"]
+
+transform/pos = Vector2( 0, -1 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.77207, 0, 0, 1.88055, -0.610931, 5.3591 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Area2D"]
+
+transform/pos = Vector2( -0.610931, 5.3591 )
+transform/scale = Vector2( 1.77207, 1.88055 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 [node name="Sprite" type="Sprite" parent="Body"]
 
@@ -44,14 +72,5 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
-
-[node name="Collision" type="Area2D" parent="Body"]
-
-transform/pos = Vector2( 0, -1 )
-input/pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
 
 

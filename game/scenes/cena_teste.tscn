@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://game/sprites/enemies/Bat_novo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/sprites/characters/Wizard_novo.tscn" type="PackedScene" id=2]
+
+[node name="CenaTeste" type="Node2D"]
+
+[node name="Bat" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 394.735, 295.885 )
+
+[node name="Wizard" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 51.7468, 54.4005 )
+
+

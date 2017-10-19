@@ -1,4 +1,4 @@
-extends "GeneralAttack.gd"
+extends "BaseAttack.gd"
 
 var distancia = 50 # Distância entre o mago e o ataque
 

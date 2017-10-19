@@ -1,14 +1,18 @@
 [gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://art/characters/wizard.png" type="Texture" id=1]
-[ext_resource path="res://game/scripts/wizard.gd" type="Script" id=2]
+[ext_resource path="res://game/scripts/characters/wizard.gd" type="Script" id=2]
 [ext_resource path="res://game/animations/wizard/attack.tres" type="Animation" id=3]
 [ext_resource path="res://game/animations/wizard/walk_down.tres" type="Animation" id=4]
 [ext_resource path="res://game/animations/wizard/walk_left.tres" type="Animation" id=5]
 [ext_resource path="res://game/animations/wizard/walk_right.tres" type="Animation" id=6]
 [ext_resource path="res://game/animations/wizard/walk_up.tres" type="Animation" id=7]
-[ext_resource path="res://game/sprites/Attack1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://game/sprites/Barrier.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/sprites/attacks/AttackBurn.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/sprites/attacks/AttackBarrier.tscn" type="PackedScene" id=9]
+
+
+
+
 
 [node name="Wizard" type="Sprite"]
 

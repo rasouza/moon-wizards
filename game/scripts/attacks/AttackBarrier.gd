@@ -1,4 +1,4 @@
-extends "GeneralAttack.gd"
+extends "BaseAttack.gd"
 
 
 

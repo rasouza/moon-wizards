@@ -1,7 +1,10 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://art/effects/shield.png" type="Texture" id=1]
-[ext_resource path="res://game/scripts/Barrier.gd" type="Script" id=2]
+[ext_resource path="res://game/scripts/attacks/AttackBarrier.gd" type="Script" id=2]
+
+
+
 
 [sub_resource type="Animation" id=1]
 
