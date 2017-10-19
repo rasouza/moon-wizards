@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=68 format=1]
+[gd_resource type="TileSet" load_steps=73 format=1]
 
 [ext_resource path="res://art/tileset/atlas1/grama1.png" type="Texture" id=1]
 [ext_resource path="res://art/tileset/atlas1/grama10.png" type="Texture" id=2]
@@ -20,8 +20,8 @@
 [ext_resource path="res://art/tileset/atlas1/terra2.png" type="Texture" id=18]
 [ext_resource path="res://art/tileset/atlas1/terra3.png" type="Texture" id=19]
 [ext_resource path="res://art/tileset/atlas1/agua1.png" type="Texture" id=20]
-[ext_resource path="res://art/tileset/atlas1/agua2.png" type="Texture" id=21]
-[ext_resource path="res://art/tileset/atlas1/agua3.png" type="Texture" id=22]
+[ext_resource path="res://art/tileset/atlas1/agua3.png" type="Texture" id=21]
+[ext_resource path="res://art/tileset/atlas1/agua2.png" type="Texture" id=22]
 [ext_resource path="res://art/tileset/atlas1/grama19.png" type="Texture" id=23]
 [ext_resource path="res://art/tileset/atlas1/grama12.png" type="Texture" id=24]
 [ext_resource path="res://art/tileset/atlas1/grama20.png" type="Texture" id=25]
@@ -61,21 +61,69 @@
 [ext_resource path="res://art/tileset/atlas1/pedra1.png" type="Texture" id=59]
 [ext_resource path="res://art/tileset/atlas1/pedra2.png" type="Texture" id=60]
 [ext_resource path="res://art/tileset/atlas1/tronco1.png" type="Texture" id=61]
-[ext_resource path="res://art/tileset/atlas1/grama16.png" type="Texture" id=62]
-[ext_resource path="res://art/tileset/atlas1/grama17.png" type="Texture" id=63]
-[ext_resource path="res://art/tileset/atlas1/grama18.png" type="Texture" id=64]
+[ext_resource path="res://art/tileset/atlas1/agua4.png" type="Texture" id=62]
+[ext_resource path="res://art/tileset/atlas1/agua6.png" type="Texture" id=63]
+[ext_resource path="res://art/tileset/atlas1/agua5.png" type="Texture" id=64]
+[ext_resource path="res://art/tileset/atlas1/grama16.png" type="Texture" id=65]
+[ext_resource path="res://art/tileset/atlas1/grama17.png" type="Texture" id=66]
+[ext_resource path="res://art/tileset/atlas1/grama18.png" type="Texture" id=67]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CanvasItemShader" id=1]
+
+_code = {
+"fragment": "uniform texture frame1;
+uniform texture frame2;
+uniform texture frame3;
+uniform texture frame4;
+float num_frames = 4.0;
+
+uniform float speed = 1.0;
+
+color col;
+float time = fract(TIME*speed);
+if (time < 1/num_frames) {
+	col = tex(frame1, UV);
+} else {
+	if (time < 2/num_frames) {
+		col = tex(frame2, UV);
+	} else {
+		if (time < 3/num_frames) {
+			col = tex(frame3, UV);
+		} else {
+			col = tex(frame4, UV);
+		}
+	}
+}
+
+COLOR = col;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/frame1 = ExtResource( 20 )
+shader_param/frame2 = ExtResource( 21 )
+shader_param/frame3 = ExtResource( 22 )
+shader_param/frame4 = ExtResource( 21 )
+shader_param/speed = 0.5
+
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 15.7386, 15.7736 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16.1686, 15.9242 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 15.8051, 16.029 )
@@ -146,7 +194,7 @@ extents = Vector2( 15.8051, 16.029 )
 6/shape_offset = Vector2( 0, 0 )
 6/shapes = [  ]
 7/name = "grama16"
-7/texture = ExtResource( 62 )
+7/texture = ExtResource( 65 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 96, 96 )
@@ -155,7 +203,7 @@ extents = Vector2( 15.8051, 16.029 )
 7/shape_offset = Vector2( 0, 0 )
 7/shapes = [  ]
 8/name = "grama17"
-8/texture = ExtResource( 63 )
+8/texture = ExtResource( 66 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 32, 32 )
@@ -164,7 +212,7 @@ extents = Vector2( 15.8051, 16.029 )
 8/shape_offset = Vector2( 0, 0 )
 8/shapes = [  ]
 9/name = "grama18"
-9/texture = ExtResource( 64 )
+9/texture = ExtResource( 67 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 32, 32 )
@@ -319,30 +367,31 @@ extents = Vector2( 15.8051, 16.029 )
 26/name = "agua1"
 26/texture = ExtResource( 20 )
 26/tex_offset = Vector2( 0, 0 )
+26/material = SubResource( 2 )
 26/modulate = Color( 1, 1, 1, 1 )
 26/region = Rect2( 0, 0, 32, 32 )
 26/occluder_offset = Vector2( 16, 16 )
 26/navigation_offset = Vector2( 16, 16 )
 26/shape_offset = Vector2( 16, 16 )
-26/shapes = [ SubResource( 1 ) ]
+26/shapes = [ SubResource( 3 ) ]
 27/name = "agua2"
-27/texture = ExtResource( 21 )
+27/texture = ExtResource( 22 )
 27/tex_offset = Vector2( 0, 0 )
 27/modulate = Color( 1, 1, 1, 1 )
 27/region = Rect2( 0, 0, 32, 32 )
 27/occluder_offset = Vector2( 16, 16 )
 27/navigation_offset = Vector2( 16, 16 )
 27/shape_offset = Vector2( 16, 16 )
-27/shapes = [ SubResource( 2 ) ]
+27/shapes = [ SubResource( 4 ) ]
 28/name = "agua3"
-28/texture = ExtResource( 22 )
+28/texture = ExtResource( 21 )
 28/tex_offset = Vector2( 0, 0 )
 28/modulate = Color( 1, 1, 1, 1 )
 28/region = Rect2( 0, 0, 32, 32 )
 28/occluder_offset = Vector2( 16, 16 )
 28/navigation_offset = Vector2( 16, 16 )
 28/shape_offset = Vector2( 16, 16 )
-28/shapes = [ SubResource( 3 ) ]
+28/shapes = [ SubResource( 5 ) ]
 29/name = "grama19"
 29/texture = ExtResource( 23 )
 29/tex_offset = Vector2( 0, 0 )
@@ -658,4 +707,31 @@ extents = Vector2( 15.8051, 16.029 )
 63/navigation_offset = Vector2( 48, 48 )
 63/shape_offset = Vector2( 0, 0 )
 63/shapes = [  ]
+64/name = "agua4"
+64/texture = ExtResource( 62 )
+64/tex_offset = Vector2( 0, 0 )
+64/modulate = Color( 1, 1, 1, 1 )
+64/region = Rect2( 0, 0, 32, 32 )
+64/occluder_offset = Vector2( 16, 16 )
+64/navigation_offset = Vector2( 16, 16 )
+64/shape_offset = Vector2( 0, 0 )
+64/shapes = [  ]
+65/name = "agua6"
+65/texture = ExtResource( 63 )
+65/tex_offset = Vector2( 0, 0 )
+65/modulate = Color( 1, 1, 1, 1 )
+65/region = Rect2( 0, 0, 32, 32 )
+65/occluder_offset = Vector2( 16, 16 )
+65/navigation_offset = Vector2( 16, 16 )
+65/shape_offset = Vector2( 0, 0 )
+65/shapes = [  ]
+66/name = "agua5"
+66/texture = ExtResource( 64 )
+66/tex_offset = Vector2( 0, 0 )
+66/modulate = Color( 1, 1, 1, 1 )
+66/region = Rect2( 0, 0, 32, 32 )
+66/occluder_offset = Vector2( 16, 16 )
+66/navigation_offset = Vector2( 16, 16 )
+66/shape_offset = Vector2( 0, 0 )
+66/shapes = [  ]
 
