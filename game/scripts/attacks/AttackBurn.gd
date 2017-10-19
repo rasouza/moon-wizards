@@ -1,11 +1,7 @@
 extends "BaseAttack.gd"
 
-var distancia = 50 # Distância entre o mago e o ataque
+func attack_loop(delta):
+	set_pos(attack_dir * RANGE)
 
-func _ready():
-	._ready()
-	dano = 10
-	set_z(-10)
-
-func attack_frame():
-	set_pos(attack_dir*distancia)
+func _on_Area2D_area_enter(area):
+	print("Colidiu!")

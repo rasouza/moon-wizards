@@ -1,19 +1,10 @@
-extends "GeneralAttack.gd"
+extends "BaseAttack.gd"
 
-var distancia = 50 # Distância entre o mago e o ataque
-var speed = 400
+const INTERVAL = 5 # Tempo entre cada shard
 
-func _ready():
-	._ready()
-	dano = 10
-	set_z(-10)
+func attack_loop(delta):
+	# Implementação: A cada X deltas dispara um shard novo com o attack_dir corrente
+	pass
 
-func attack_frame():
-	var wizard_pos = wizard.get_global_pos()
-	var mouse = get_viewport().get_mouse_pos()
-	var attack_dir = (mouse - wizard_pos).normalized()
-	
-	#var motion = attack_dir * speed * delta
-	#set_pos(get_pos() + motion)
-	
-	set_pos(attack_dir*distancia)
+func _on_Area2D_area_enter(area):
+	print("Colidiu gelo!")

@@ -1,21 +1,31 @@
-extends Sprite
+extends KinematicBody2D
 
-var dano = 0
+### PROPRIEDADES BASE ####
 
-onready var wizard = get_parent()
-onready var anim = get_node("AnimationPlayer")
+const DAMAGE = 0
+const RANGE = 50
+
+##########################
+
 var atacando = false
 var attack_dir = null
+var wizard_pos = Vector2(0,0)
+
+onready var player = get_tree().get_nodes_in_group("player")
+onready var anim = get_node("Sprite/Animation")
 
 func _ready():
+	get_node("Area2D").connect("area_enter", self, "_on_Area2D_area_enter") # Colisor
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
+	# Verifica se existe um player na cena
+	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
+
 	if (atacando):
-		var wizard_pos = wizard.get_global_pos()
 		var mouse = get_viewport().get_mouse_pos()
 		attack_dir = (mouse - wizard_pos).normalized()
-		attack_frame()
+		attack_loop(delta)
 
 func attack():
 	atacando = true
@@ -27,5 +37,6 @@ func stop():
 	anim.stop()
 	atacando = false
 
-func attack_frame():
-	pass	
+# Particularidades do ataque a ser implementado
+func attack_loop():
+	pass

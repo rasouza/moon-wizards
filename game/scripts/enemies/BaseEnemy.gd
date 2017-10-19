@@ -3,12 +3,16 @@ extends KinematicBody2D
 const DIR = preload("../directions.gd")
 const ACT = preload("../actions.gd")
 
-var SPEED = 100
-var KNOCKBACK = 10
-var ATTACK_COOLDOWN = 5
+### PROPRIEDADES ###########
 
-var direcao
-var estado
+const SPEED = 100
+const KNOCKBACK = 10
+const ATTACK_COOLDOWN = 5
+
+###########################
+
+var direcao = DIR.NENHUMA
+var estado = ACT.ATACANDO
 var dir = Vector2(0,0)
 var wizard_pos = Vector2(0,0)
 
@@ -17,27 +21,24 @@ onready var tween = get_node("Tween")
 onready var player = get_tree().get_nodes_in_group("player")
 
 func _ready():
-	direcao = DIR.NENHUMA
-	estado = ACT.ATACANDO
 	get_node("Area2D").connect("area_enter", self, "_on_Area2D_area_enter") # Colisor
-
 	set_fixed_process(true)
 
 func _fixed_process(delta):
+	# Verifica se existe um player na cena
+	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
+	dir = (wizard_pos - get_global_pos()).normalized()
+	
 	if (estado == ACT.ATACANDO): 
 		movimento(delta)
 		animacao(delta)
 	
 func movimento(delta):
-	# Verifica se existe um player na cena
-	if (player.size() != 0): wizard_pos = player[0].get_node("Body").get_global_pos()
-	
-	dir = (wizard_pos - get_global_pos()).normalized()
 	var motion = dir * SPEED * delta
 	move(motion)
 
 func animacao(delta):
-	var angulo = dir.snapped(Vector2(1,1))
+	var angulo = dir.snapped(Vector2(1,1)) # Gruda o vetor no grid
 	if (angulo == Vector2(0,-1) or angulo == Vector2(-1,-1)) and direcao != DIR.CIMA:
 		animacao.play("fly_up")
 		direcao = DIR.CIMA
