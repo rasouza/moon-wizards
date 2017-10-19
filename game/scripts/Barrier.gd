@@ -1,4 +1,6 @@
 extends "GeneralAttack.gd"
 
+
+
 func attack_frame():
-	pass
+	set_rot(atan2(attack_dir.x, attack_dir.y))
