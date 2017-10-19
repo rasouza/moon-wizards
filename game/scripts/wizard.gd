@@ -10,6 +10,7 @@ var active_attack
 
 onready var anim = get_node("WizardAnim")
 onready var attack1 = get_node("Attack1")
+onready var attack2 = get_node("Barrier")
 
 func _ready():
 	active_attack = attack1
@@ -70,6 +71,12 @@ func animacao(event):
 	
 
 func ataque(event):
+	if (event.is_action_pressed("attack_burn")):
+		active_attack = attack1
+	
+	if (event.is_action_pressed("attack_barrier")):
+		active_attack = attack2
+	
 	if (event.is_action_pressed("ui_attack")):
 		var global_pos = self.get_global_pos()
 		var mouse = get_viewport().get_mouse_pos()
