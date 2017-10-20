@@ -76,7 +76,6 @@ func _on_Area2D_area_enter( area ):
 	if (body.type == TYPE.ATTACK): get_hit(body)
 	knockback()
 	
-func hit(player): 
-	print(DAMAGE)
-	player.HP -= DAMAGE
-func get_hit(attack): pass
+func hit(player): player.HP -= DAMAGE
+func get_hit(attack): HP -= attack.DAMAGE
+	

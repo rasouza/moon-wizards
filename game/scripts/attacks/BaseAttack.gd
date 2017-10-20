@@ -41,11 +41,8 @@ func stop():
 	atacando = false
 
 # Particularidades do ataque a ser implementado
-func attack_loop():
-	pass
-
-func hit(enemy):
-	enemy.HP -= DAMAGE
+func attack_loop(): pass
+func hit(enemy): pass
 
 func _on_Area2D_area_enter(area):
 	var body = area.get_parent()
