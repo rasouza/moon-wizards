@@ -11,6 +11,7 @@ const SPEED = 100
 const KNOCKBACK = 10
 const ATTACK_COOLDOWN = 5
 const DAMAGE = 0
+const HP = 0
 
 ###########################
 
@@ -69,7 +70,7 @@ func attack():
 	estado = ACT.ATACANDO
 
 func _on_Area2D_body_enter( body ): 
-	if (body.type == TYPE.PLAYER): hit(body)
+	if (body.get("type") and body.type == TYPE.PLAYER): hit(body)
 
 func _on_Area2D_area_enter( area ): 
 	var body = area.get_parent()

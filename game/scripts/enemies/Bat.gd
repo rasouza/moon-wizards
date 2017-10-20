@@ -2,7 +2,7 @@ extends "BaseEnemy.gd"
 
 ### PROPRIEDADES #####
 
-var HP = 10
+const HP = 10
 const DAMAGE = 2
 
 #######################

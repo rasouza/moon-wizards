@@ -46,4 +46,4 @@ func hit(enemy): pass
 
 func _on_Area2D_area_enter(area):
 	var body = area.get_parent()
-	if (body.type == TYPE.ENEMY): hit(body)
+	if (body.get("type") and body.type == TYPE.ENEMY): hit(body)
