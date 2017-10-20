@@ -18,6 +18,7 @@ onready var player = get_tree().get_nodes_in_group("player")
 onready var anim = get_node("Sprite/Animation")
 
 func _ready():
+	get_node("Area2D").connect("area_enter", self, "_on_Area2D_area_enter") # Colisor
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
@@ -36,6 +37,7 @@ func attack():
 
 func stop():
 	hide()
+	anim.stop()
 	atacando = false
 
 # Particularidades do ataque a ser implementado
@@ -44,3 +46,7 @@ func attack_loop():
 
 func hit(enemy):
 	enemy.HP -= DAMAGE
+
+func _on_Area2D_area_enter(area):
+	var body = area.get_parent()
+	if (body.type == TYPE.ENEMY): hit(body)
