@@ -7,7 +7,6 @@ const SPEED = 100
 #######################
 
 var dir = Vector2()
-var attack_dir = Vector2()
 var atacando = false
 var last_anim = "walk_right"
 var active_anim = "walk_right"
@@ -79,9 +78,6 @@ func ataque(event):
 	if (event.is_action_pressed("attack_barrier")): active_attack = attack2
 	
 	if (event.is_action_pressed("ui_attack")):
-		var global_pos = self.get_global_pos()
-		var mouse = get_viewport().get_mouse_pos()
-		attack_dir = (mouse - global_pos).normalized()
 		if(!atacando):
 			anim.play("attack")
 		atacando = true
