@@ -10,6 +10,7 @@ const TYPE = preload("../types.gd")
 const SPEED = 100
 const KNOCKBACK = 10
 const ATTACK_COOLDOWN = 5
+const DAMAGE = 0
 
 ###########################
 
@@ -29,7 +30,7 @@ func _ready():
 
 func _fixed_process(delta):
 	# Verifica se existe um player na cena
-	if (player.size() != 0): wizard_pos = player.get_global_pos()
+	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
 	dir = (wizard_pos - get_global_pos()).normalized()
 	
 	if (estado == ACT.ATACANDO): 
@@ -71,5 +72,7 @@ func _on_Area2D_area_enter( area ):
 	elif (body.type == TYPE.ATTACK): get_hit(body)
 	knockback()
 	
-func hit(player): player.HP -= DAMAGE
+func hit(player): 
+	print(DAMAGE)
+	player.HP -= DAMAGE
 func get_hit(attack): pass

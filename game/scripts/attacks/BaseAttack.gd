@@ -22,8 +22,8 @@ func _ready():
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
-	# Verifica se existe um player na cena
-	if (player.size() != 0): wizard_pos = player.get_global_pos()
+	# Verifica se existe um player na cen
+	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
 
 	if (atacando):
 		var mouse = get_viewport().get_mouse_pos()
