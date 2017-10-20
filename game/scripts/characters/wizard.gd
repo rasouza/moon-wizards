@@ -1,11 +1,15 @@
 extends KinematicBody2D
 
+const TYPE = preload("../types.gd")
+
 ### PROPRIEDADES ######
 
 const SPEED = 100
+var HP = 100
 
 #######################
 
+var type = TYPE.PLAYER
 var dir = Vector2()
 var atacando = false
 var last_anim = "walk_right"

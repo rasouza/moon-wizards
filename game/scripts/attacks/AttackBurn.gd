@@ -1,5 +1,11 @@
 extends "BaseAttack.gd"
 
+### PROPRIEDADES #####
+
+const DAMAGE = 10
+
+######################
+
 func attack():
 	atacando = true
 	show()
@@ -9,8 +15,5 @@ func _on_Animation_finished():
 
 func attack_loop(delta):
 	set_pos(attack_dir * RANGE)
-
-func _on_Area2D_area_enter(area):
-	print("Colidiu!")
 
 

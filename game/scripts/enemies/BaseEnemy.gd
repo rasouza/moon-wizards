@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 const DIR = preload("../directions.gd")
 const ACT = preload("../actions.gd")
+const TYPE = preload("../types.gd")
+
 
 ### PROPRIEDADES ###########
 
@@ -11,6 +13,7 @@ const ATTACK_COOLDOWN = 5
 
 ###########################
 
+var type = TYPE.ENEMY
 var direcao = DIR.NENHUMA
 var estado = ACT.ATACANDO
 var dir = Vector2(0,0)
@@ -26,7 +29,7 @@ func _ready():
 
 func _fixed_process(delta):
 	# Verifica se existe um player na cena
-	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
+	if (player.size() != 0): wizard_pos = player.get_global_pos()
 	dir = (wizard_pos - get_global_pos()).normalized()
 	
 	if (estado == ACT.ATACANDO): 
@@ -63,5 +66,10 @@ func attack():
 	estado = ACT.ATACANDO
 
 func _on_Area2D_area_enter( area ):
-	# PRECISA CHECAR SE É UM ATAQUE COLIDINDO
+	var body = area.get_parent()
+	if (body.type == TYPE.PLAYER): hit(body)
+	elif (body.type == TYPE.ATTACK): get_hit(body)
 	knockback()
+	
+func hit(player): player.HP -= DAMAGE
+func get_hit(attack): pass

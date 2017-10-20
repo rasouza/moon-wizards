@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const TYPE = preload("../types.gd")
+
 ### PROPRIEDADES BASE ####
 
 const DAMAGE = 0
@@ -7,6 +9,7 @@ const RANGE = 50
 
 ##########################
 
+var type = TYPE.ATTACK
 var atacando = false
 var attack_dir = null
 var wizard_pos = Vector2(0,0)
@@ -20,7 +23,7 @@ func _ready():
 	
 func _fixed_process(delta):
 	# Verifica se existe um player na cena
-	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
+	if (player.size() != 0): wizard_pos = player.get_global_pos()
 
 	if (atacando):
 		var mouse = get_viewport().get_mouse_pos()
@@ -40,3 +43,10 @@ func stop():
 # Particularidades do ataque a ser implementado
 func attack_loop():
 	pass
+
+func hit(enemy):
+	enemy.HP -= DAMAGE
+
+func _on_Area2D_area_enter(area):
+	var body = area.get_parent()
+	if (body.type == TYPE.ENEMY): hit(body)
