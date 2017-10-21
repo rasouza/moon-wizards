@@ -74,7 +74,8 @@ func _on_Area2D_body_enter( body ):
 
 func _on_Area2D_area_enter( area ): 
 	var body = area.get_parent()
-	if (body.type == TYPE.ATTACK): get_hit(body)
+	if (body.type == TYPE.ATTACK and body.atacando): 
+		get_hit(body)
 	knockback()
 	
 func hit(player): player.HP -= DAMAGE
