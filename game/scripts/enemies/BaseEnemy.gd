@@ -13,6 +13,11 @@ const ATTACK_COOLDOWN = 5
 const DAMAGE = 0
 const HP = 0
 
+var anim_up
+var anim_down
+var anim_left
+var anim_right
+
 ###########################
 
 var type = TYPE.ENEMY
@@ -46,16 +51,16 @@ func movimento(delta):
 func animacao(delta):
 	var angulo = dir.snapped(Vector2(1,1)) # Gruda o vetor no grid
 	if (angulo == Vector2(0,-1) or angulo == Vector2(-1,-1)) and direcao != DIR.CIMA:
-		animacao.play("fly_up")
+		animacao.play(anim_up)
 		direcao = DIR.CIMA
 	elif (angulo == Vector2(-1,0) or angulo == Vector2(-1,1)) and direcao != DIR.ESQUERDA:
-		animacao.play("fly_left")
+		animacao.play(anim_left)
 		direcao = DIR.ESQUERDA
 	elif (angulo == Vector2(0,1) or angulo == Vector2(1,1)) and direcao != DIR.BAIXO:
-		animacao.play("fly_down")
+		animacao.play(anim_down)
 		direcao = DIR.BAIXO
 	elif (angulo == Vector2(1,0) or angulo == Vector2(1,-1)) and direcao != DIR.DIREITA:
-		animacao.play("fly_right")
+		animacao.play(anim_right)
 		direcao = DIR.DIREITA
 
 # Depois do knockback o inimigo entra em cooldown

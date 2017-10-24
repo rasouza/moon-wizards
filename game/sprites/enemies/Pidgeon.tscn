@@ -2,21 +2,85 @@
 
 [ext_resource path="res://game/scripts/enemies/Pidgeon.gd" type="Script" id=1]
 [ext_resource path="res://art/enemies/pidgeon.png" type="Texture" id=2]
-[ext_resource path="res://game/animations/enemies/fly_down.tres" type="Animation" id=3]
-[ext_resource path="res://game/animations/enemies/fly_left.tres" type="Animation" id=4]
-[ext_resource path="res://game/animations/enemies/fly_right.tres" type="Animation" id=5]
-[ext_resource path="res://game/animations/enemies/fly_up.tres" type="Animation" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.4211
 
+[sub_resource type="Animation" id=2]
+
+resource/name = "pidgeon_down"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "pidgeon_left"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "pidgeon_right"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 7 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "pidgeon_up"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 10 ]
+}
+
 [node name="Pidgeon" type="KinematicBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -1, 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 0
 collision/mask = 5
@@ -28,17 +92,17 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 10
+frame = 11
 
 [node name="Animation" type="AnimationPlayer" parent="Sprite"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/fly_down = ExtResource( 3 )
-anims/fly_left = ExtResource( 4 )
-anims/fly_right = ExtResource( 5 )
-anims/fly_up = ExtResource( 6 )
+anims/pidgeon_down = SubResource( 2 )
+anims/pidgeon_left = SubResource( 3 )
+anims/pidgeon_right = SubResource( 4 )
+anims/pidgeon_up = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -46,7 +110,6 @@ autoplay = ""
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( -1, 7 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -55,7 +118,7 @@ _update_shape_index = 0
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -1, 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -66,7 +129,6 @@ collision/mask = 0
 
 [node name="CollisionShape2D1" type="CollisionShape2D" parent="Area2D"]
 
-transform/pos = Vector2( -1, 7 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

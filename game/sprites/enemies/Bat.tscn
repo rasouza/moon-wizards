@@ -2,15 +2,79 @@
 
 [ext_resource path="res://game/scripts/enemies/Bat.gd" type="Script" id=1]
 [ext_resource path="res://art/enemies/32x32-bat-sprite.png" type="Texture" id=2]
-[ext_resource path="res://game/animations/enemies/fly_down.tres" type="Animation" id=3]
-[ext_resource path="res://game/animations/enemies/fly_left.tres" type="Animation" id=4]
-[ext_resource path="res://game/animations/enemies/fly_right.tres" type="Animation" id=5]
-[ext_resource path="res://game/animations/enemies/fly_up.tres" type="Animation" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 17.6811
+radius = 13.0972
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "bat_down"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "bat_left"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15, 14 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "bat_right"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 6 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "bat_up"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 10 ]
+}
 
 [node name="Bat" type="KinematicBody2D"]
 
@@ -28,17 +92,17 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
-frame = 7
+frame = 13
 
 [node name="Animation" type="AnimationPlayer" parent="Sprite"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/fly_down = ExtResource( 3 )
-anims/fly_left = ExtResource( 4 )
-anims/fly_right = ExtResource( 5 )
-anims/fly_up = ExtResource( 6 )
+anims/bat_down = SubResource( 2 )
+anims/bat_left = SubResource( 3 )
+anims/bat_right = SubResource( 4 )
+anims/bat_up = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
