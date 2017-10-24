@@ -26,8 +26,7 @@ onready var tween = get_node("Tween")
 onready var player = get_tree().get_nodes_in_group("player")
 
 func _ready():
-	get_node("Area2D").connect("body_enter", self, "_on_Area2D_body_enter") # Colisor do player
-	get_node("Area2D").connect("area_enter", self, "_on_Area2D_area_enter") # Colisor do ataque
+	get_node("Area2D").connect("body_enter", self, "_on_body_enter") # Colisor do player
 	
 	set_fixed_process(true)
 
@@ -69,15 +68,12 @@ func knockback():
 func attack():
 	estado = ACT.ATACANDO
 
-func _on_Area2D_body_enter( body ): 
+func _on_body_enter( body ): 
 	if (body.get("type") and body.type == TYPE.PLAYER): hit(body)
-
-func _on_Area2D_area_enter( area ): 
-	var body = area.get_parent()
-	if (body.type == TYPE.ATTACK and body.atacando): 
+	elif (body.type == TYPE.ATTACK and body.atacando): 
 		get_hit(body)
-	knockback()
-	
+		knockback()
+
 func hit(player): player.HP -= DAMAGE
 func get_hit(attack): HP -= attack.DAMAGE
 	

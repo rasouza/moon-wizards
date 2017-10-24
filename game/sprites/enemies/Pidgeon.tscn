@@ -15,8 +15,11 @@ radius = 10.4211
 [node name="Pidgeon" type="KinematicBody2D"]
 
 input/pickable = false
-collision/layers = 1
-collision/mask = 1
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -1, 7 )
+shapes/0/trigger = false
+collision/layers = 0
+collision/mask = 5
 collision/margin = 0.0
 script/script = ExtResource( 1 )
 
@@ -41,6 +44,13 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -1, 7 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
 [node name="Area2D" type="Area2D" parent="."]
 
 input/pickable = true
@@ -51,8 +61,10 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/layers = 10
+collision/mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Area2D"]
 
 transform/pos = Vector2( -1, 7 )
 shape = SubResource( 1 )
