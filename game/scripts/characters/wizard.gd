@@ -94,6 +94,11 @@ func ataque(event):
 func _fixed_process(delta):
 	var motion = dir * SPEED * delta
 	move(motion)
+	
+	if (is_colliding()):
+        var n = get_collision_normal()
+        motion = n.slide(motion)
+        move(motion)
 
 func _on_AnimationPlayer_finished():
 	if (anim.get_current_animation() == "attack"): anim.play(active_anim)
