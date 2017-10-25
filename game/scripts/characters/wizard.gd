@@ -92,7 +92,7 @@ func ataque(event):
 		active_attack.stop();
 
 func _fixed_process(delta):
-	var motion = dir * SPEED * delta
+	var motion = dir.normalized() * SPEED * delta
 	move(motion)
 	
 	if (is_colliding()):
