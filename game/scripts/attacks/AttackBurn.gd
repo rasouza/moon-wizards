@@ -2,7 +2,7 @@ extends "BaseAttack.gd"
 
 ### PROPRIEDADES #####
 
-const DAMAGE = 10
+const DAMAGE = 5
 
 ######################
 

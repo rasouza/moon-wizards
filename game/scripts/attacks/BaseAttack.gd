@@ -43,7 +43,11 @@ func stop():
 
 # Particularidades do ataque a ser implementado
 func attack_loop(): pass
-func hit(enemy): pass
+
+func hit(enemy):
+	enemy.HP -= DAMAGE
+	if enemy.HP <= 0:
+		enemy.get_parent().remove_child(enemy)
 
 func _on_body_enter(body):
 	if (atacando and body.get("type") and body.type == TYPE.ENEMY): hit(body)

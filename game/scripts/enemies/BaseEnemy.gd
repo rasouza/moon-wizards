@@ -11,7 +11,7 @@ const SPEED = 100
 const KNOCKBACK = 10
 const ATTACK_COOLDOWN = 5
 const DAMAGE = 0
-const HP = 0
+var HP = 0
 
 var anim_up
 var anim_down
@@ -74,11 +74,11 @@ func attack():
 	estado = ACT.ATACANDO
 
 func _on_body_enter( body ): 
-	if (body.get("type") and body.type == TYPE.PLAYER): hit(body)
-	elif (body.type == TYPE.ATTACK and body.atacando): 
+	if (body.type == TYPE.ATTACK and body.atacando): 
 		get_hit(body)
-		knockback()
 
-func hit(player): player.HP -= DAMAGE
-func get_hit(attack): HP -= attack.DAMAGE
+func hit(player): 
+	player.HP -= DAMAGE
+	print("HP: " + str(player.HP))
+func get_hit(attack): pass
 	

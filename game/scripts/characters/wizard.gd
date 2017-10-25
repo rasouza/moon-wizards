@@ -102,3 +102,7 @@ func _fixed_process(delta):
 
 func _on_AnimationPlayer_finished():
 	if (anim.get_current_animation() == "attack"): anim.play(active_anim)
+
+func _on_Area2D_body_enter( body ):
+	if(body.get("type") and body.type == TYPE.ENEMY):
+		body.hit(self)
