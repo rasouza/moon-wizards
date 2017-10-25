@@ -26,7 +26,7 @@ func _fixed_process(delta):
 	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
 
 	if (atacando):
-		var mouse = get_viewport().get_mouse_pos()
+		var mouse = get_global_mouse_pos()
 		attack_dir = (mouse - wizard_pos).normalized()
 		attack_loop(delta)
 
