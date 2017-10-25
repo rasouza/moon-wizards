@@ -78,8 +78,12 @@ func animacao(event):
 		anim.play(active_anim)
 
 func ataque(event):
-	if (event.is_action_pressed("attack_burn")): active_attack = attack1
-	if (event.is_action_pressed("attack_barrier")): active_attack = attack2
+	if (event.is_action_pressed("attack_burn") and active_attack != attack1):
+		active_attack.stop()
+		active_attack = attack1
+	if (event.is_action_pressed("attack_barrier") and active_attack != attack2):
+		active_attack.stop()
+		active_attack = attack2
 	
 	if (event.is_action_pressed("ui_attack")):
 		if(!atacando):
