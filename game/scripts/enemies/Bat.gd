@@ -3,6 +3,7 @@ extends "BaseEnemy.gd"
 ### PROPRIEDADES #####
 
 const DAMAGE = 2
+const SPEED = 200
 
 #######################
 
