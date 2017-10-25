@@ -167,6 +167,14 @@ drag_margin/bottom = 0.2
 
 transform/pos = Vector2( 163.816, -364.723 )
 
+[node name="Bat1" parent="TilesObjects" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 402.384, -351.091 )
+
+[node name="Bat2" parent="TilesObjects" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 27.4918, -398.804 )
+
 [node name="Pidgeon" parent="TilesObjects" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -250.361, -645.992 )
