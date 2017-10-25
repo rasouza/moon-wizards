@@ -80,5 +80,7 @@ func _on_body_enter( body ):
 func hit(player): 
 	player.HP -= DAMAGE
 	print("HP: " + str(player.HP))
-func get_hit(attack): pass
+func get_hit(attack):
+	if HP <= 0:
+		get_parent().remove_child(self)
 	
