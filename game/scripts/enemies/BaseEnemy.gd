@@ -11,6 +11,7 @@ const SPEED = 100
 const KNOCKBACK = 10
 const ATTACK_COOLDOWN = 5
 const DAMAGE = 0
+const ATTACK_RANGE = 300
 var HP = 0
 
 var anim_up
@@ -22,9 +23,11 @@ var anim_right
 
 var type = TYPE.ENEMY
 var direcao = DIR.NENHUMA
-var estado = ACT.ATACANDO
+var estado = ACT.ANDANDO
 var dir = Vector2(0,0)
 var wizard_pos = Vector2(0,0)
+var counter = 0
+var distancia
 
 onready var animacao = get_node("Sprite/Animation")
 onready var tween = get_node("Tween")
@@ -38,15 +41,23 @@ func _ready():
 func _fixed_process(delta):
 	# Verifica se existe um player na cena
 	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
-	dir = (wizard_pos - get_global_pos()).normalized()
+	distancia = (wizard_pos - get_global_pos()).length()
 	
-	if (estado == ACT.ATACANDO): 
-		movimento(delta)
-		animacao(delta)
+	if (distancia <= ATTACK_RANGE): estado = ACT.ATACANDO
+	
+	if (estado == ACT.ATACANDO): atacando(delta)
+	if (estado == ACT.ANDANDO): andando(delta)
+	
+	movimento(delta)
+	animacao(delta)
 	
 func movimento(delta):
 	var motion = dir * SPEED * delta
 	move(motion)
+
+func atacando(delta): dir = (wizard_pos - get_global_pos()).normalized()
+func andando(delta): pass
+	
 
 func animacao(delta):
 	var angulo = dir.snapped(Vector2(1,1)) # Gruda o vetor no grid
