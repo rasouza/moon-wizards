@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://game/tileset/TilesCenario.tres" type="TileSet" id=1]
 [ext_resource path="res://game/sprites/TilesWater.gd" type="Script" id=2]
 [ext_resource path="res://game/sprites/characters/wizard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/sprites/enemies/Bat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/sprites/enemies/Pidgeon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/sprites/enemies/Spider.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/sprites/enemies/Beetle.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 
@@ -121,6 +123,7 @@ __meta__ = {
 
 [node name="TilesObjects" type="TileMap" parent="."]
 
+editor/display_folded = true
 mode = 0
 tile_set = ExtResource( 1 )
 cell/size = Vector2( 32, 32 )
@@ -178,5 +181,27 @@ transform/pos = Vector2( 27.4918, -398.804 )
 [node name="Pidgeon" parent="TilesObjects" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -250.361, -645.992 )
+
+[node name="Spider" parent="TilesObjects" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -352.147, -164.26 )
+
+[node name="Spider 2" parent="TilesObjects" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 426.752, -328.076 )
+
+[node name="Spider 3" parent="TilesObjects" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 442.207, 197.372 )
+
+[node name="Beetle" parent="TilesObjects" instance=ExtResource( 7 )]
+
+[node name="Beetle" parent="TilesObjects/Beetle" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 136.211, 185.008 )
+
+[node name="Beetle 2" parent="TilesObjects/Beetle" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 661.658, -507.347 )
 
 
