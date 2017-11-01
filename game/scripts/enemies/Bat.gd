@@ -2,7 +2,7 @@ extends "BaseEnemy.gd"
 
 ### PROPRIEDADES #####
 
-const DAMAGE = 2
+const DAMAGE = 4
 const SPEED = 200
 
 #######################

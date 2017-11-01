@@ -42,6 +42,9 @@ func movimento(event):
 	if(event.is_action_released("ui_left")): dir -= Vector2(-1, 0)
 	if(event.is_action_released("ui_up")): dir -= Vector2(0, -1)
 	if(event.is_action_released("ui_down")): dir -= Vector2(0, 1)
+	
+	if(event.is_action_released("ui_select")):
+			get_node("/root/global").goto_scene("res://game/scenes/cena_teste.tscn")
 
 func animacao(event):
 	if(event.is_action_pressed("ui_right")):
