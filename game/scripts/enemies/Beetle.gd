@@ -3,12 +3,11 @@ extends "BaseEnemy.gd"
 ### PROPRIEDADES #####
 
 const DAMAGE = 2
-const SPEED = 200
 
 #######################
 
 func _ready():
-	HP = 10
+	HP = 20
 	anim_up = "beetle_up"
 	anim_down = "beetle_down"
 	anim_left = "beetle_left"
@@ -16,4 +15,3 @@ func _ready():
 	
 func hit(player):
 	.hit(player)
-	knockback()
