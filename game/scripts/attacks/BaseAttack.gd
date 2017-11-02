@@ -34,7 +34,6 @@ func attack():
 	atacando = true
 	show()
 	anim.play("attack")
-	
 
 func stop():
 	hide()

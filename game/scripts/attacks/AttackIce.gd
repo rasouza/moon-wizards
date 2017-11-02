@@ -1,26 +1,38 @@
-extends "BaseAttack.gd"
+extends Object
 
-const INTERVAL = 5 # Tempo entre cada shard
-const DAMAGE = 2
+const AttackIceSprite = preload("res://game/sprites/attacks/AttackIceSprite.tscn")
 
-var direcao
+const INTERVAL_WAIT = 1
+const INTERVAL_SHOT = 0.3
 
-# inicio do gelo: calcula a direção para todo o seu tempo de
-# existência
+var wizard
+var timer
+
+func _init(wizard):
+	self.wizard = wizard
+	self.timer = Timer.new()
+
 func attack():
-	.attack()
-	var mouse = get_global_mouse_pos()
-	direcao = (mouse - wizard_pos).normalized()
-	set_rot(atan2(direcao.x, direcao.y) - 1.5)
-	#set_pos(player[0].get_global_pos())
+	wizard.add_child(timer)
+	timer.set_one_shot(true)
+	timer.set_wait_time(INTERVAL_WAIT)
+	timer.connect("timeout", self, "apos_espera")
+	timer.start()
 
-func attack_loop(delta):
-	set_pos(get_pos() + direcao)
+func apos_espera():
+	timer.disconnect("timeout", self, "apos_espera")
+	timer.set_one_shot(false)
+	timer.set_wait_time(INTERVAL_SHOT)
+	timer.connect("timeout", self, "disparo")
+	timer.start()
 
-func hit(enemy):
-	enemy.HP -= DAMAGE
-
-# O gelo não deve parar quando solta o botão do mouse, 
-# e sim com um timer
 func stop():
-	pass
+	timer.stop()
+	timer.disconnect("timeout", self, "apos_espera")
+	timer.disconnect("timeout", self, "disparo")
+	wizard.remove_child(timer)
+
+func disparo():
+	var ice = AttackIceSprite.instance()
+	ice.wizard = wizard
+	wizard.get_parent().add_child(ice)

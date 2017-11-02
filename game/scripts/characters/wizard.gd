@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const TYPE = preload("../types.gd")
+const ICE = preload("../attacks/AttackIce.gd")
 
 ### PROPRIEDADES ######
 
@@ -19,10 +20,13 @@ var active_attack
 onready var anim = get_node("Sprite/Animation")
 onready var attack1 = get_node("Attacks/Burn")
 onready var attack2 = get_node("Attacks/Barrier")
-onready var attack3 = get_node("Attacks/Ice")
+var attack3
+#onready var attack3 = get_node("Attacks/Ice")
 
 func _ready():
 	active_attack = attack1
+	
+	attack3 = ICE.new(self)
 	
 	self.set_fixed_process(true)
 	self.set_process_input(true)
