@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://game/scripts/characters/wizard.gd" type="Script" id=1]
 [ext_resource path="res://art/characters/wizard.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://game/animations/wizard/walk_up.tres" type="Animation" id=7]
 [ext_resource path="res://game/sprites/attacks/AttackBurn.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/sprites/attacks/AttackBarrier.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/sprites/attacks/AttackIce.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -68,6 +69,10 @@ autoplay = ""
 visibility/visible = false
 
 [node name="Barrier" parent="Attacks" instance=ExtResource( 9 )]
+
+visibility/visible = false
+
+[node name="Ice" parent="Attacks" instance=ExtResource( 10 )]
 
 visibility/visible = false
 
