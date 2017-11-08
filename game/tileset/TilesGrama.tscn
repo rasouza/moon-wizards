@@ -1496,6 +1496,16 @@ texture = ExtResource( 100 )
 transform/pos = Vector2( 920, 350 )
 texture = ExtResource( 101 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="pedra9"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
 [node name="planta1" type="Sprite" parent="."]
 
 transform/pos = Vector2( 730, 370 )

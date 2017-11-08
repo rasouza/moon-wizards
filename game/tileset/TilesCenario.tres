@@ -141,47 +141,47 @@ points = Vector2Array( 16, -16, 16, 16, -16, 16, -16, -16 )
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 24, 32, -32, 0, 32, 0, 32, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 32, 64, -32, 64, -32, 32, -24, 32, 32, 60 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -32, 64, -32, 60, 32, 28, 32, 64 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -32, 28, -32, 0, 32, 0, -24, 28 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -16, -12, -16, -16, 12 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 16, 12, 12, -16, 16, -16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=11]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=12]
+[sub_resource type="ConvexPolygonShape2D" id=13]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 24, -40, 32, -32, 32, 24, 24, 32, -24, 32, -32, 24, -32, -32, -24, -40 )
 
-[sub_resource type="ConvexPolygonShape2D" id=13]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
@@ -345,7 +345,7 @@ points = Vector2Array( -12, -24, 12, -24, 32, 0, 16, 16, -12, 16, -32, 4 )
 3/occluder_offset = Vector2( 16, 16 )
 3/navigation_offset = Vector2( 16, 16 )
 3/shape_offset = Vector2( 16, 16 )
-3/shapes = [ SubResource( 11 ) ]
+3/shapes = [ SubResource( 5 ) ]
 4/name = "agua5"
 4/texture = ExtResource( 34 )
 4/tex_offset = Vector2( 0, 0 )
@@ -354,7 +354,7 @@ points = Vector2Array( -12, -24, 12, -24, 32, 0, 16, 16, -12, 16, -32, 4 )
 4/occluder_offset = Vector2( 16, 16 )
 4/navigation_offset = Vector2( 16, 16 )
 4/shape_offset = Vector2( 16, 16 )
-4/shapes = [ SubResource( 13 ) ]
+4/shapes = [ SubResource( 6 ) ]
 5/name = "copa1"
 5/texture = ExtResource( 45 )
 5/tex_offset = Vector2( 0, 0 )
@@ -543,7 +543,7 @@ points = Vector2Array( -12, -24, 12, -24, 32, 0, 16, 16, -12, 16, -32, 4 )
 25/occluder_offset = Vector2( 32, 32 )
 25/navigation_offset = Vector2( 32, 32 )
 25/shape_offset = Vector2( 32, 32 )
-25/shapes = [ SubResource( 5 ), SubResource( 6 ) ]
+25/shapes = [ SubResource( 7 ), SubResource( 8 ) ]
 26/name = "escada4"
 26/texture = ExtResource( 21 )
 26/tex_offset = Vector2( 0, 32 )
@@ -552,7 +552,7 @@ points = Vector2Array( -12, -24, 12, -24, 32, 0, 16, 16, -12, 16, -32, 4 )
 26/occluder_offset = Vector2( 32, 32 )
 26/navigation_offset = Vector2( 32, 32 )
 26/shape_offset = Vector2( 32, 32 )
-26/shapes = [ SubResource( 7 ), SubResource( 8 ) ]
+26/shapes = [ SubResource( 9 ), SubResource( 10 ) ]
 27/name = "escada_left"
 27/texture = ExtResource( 22 )
 27/tex_offset = Vector2( 0, 0 )
@@ -561,7 +561,7 @@ points = Vector2Array( -12, -24, 12, -24, 32, 0, 16, 16, -12, 16, -32, 4 )
 27/occluder_offset = Vector2( 16, 16 )
 27/navigation_offset = Vector2( 16, 16 )
 27/shape_offset = Vector2( 16, 16 )
-27/shapes = [ SubResource( 9 ) ]
+27/shapes = [ SubResource( 11 ) ]
 28/name = "escada_right"
 28/texture = ExtResource( 22 )
 28/tex_offset = Vector2( 0, 0 )
@@ -570,7 +570,7 @@ points = Vector2Array( -12, -24, 12, -24, 32, 0, 16, 16, -12, 16, -32, 4 )
 28/occluder_offset = Vector2( 16, 16 )
 28/navigation_offset = Vector2( 16, 16 )
 28/shape_offset = Vector2( 16, 16 )
-28/shapes = [ SubResource( 10 ) ]
+28/shapes = [ SubResource( 12 ) ]
 29/name = "escada_center"
 29/texture = ExtResource( 22 )
 29/tex_offset = Vector2( 0, 0 )
@@ -669,7 +669,7 @@ points = Vector2Array( -12, -24, 12, -24, 32, 0, 16, 16, -12, 16, -32, 4 )
 39/occluder_offset = Vector2( 48, 48 )
 39/navigation_offset = Vector2( 48, 48 )
 39/shape_offset = Vector2( 48, 48 )
-39/shapes = [ SubResource( 12 ) ]
+39/shapes = [ SubResource( 13 ) ]
 40/name = "grama17"
 40/texture = ExtResource( 35 )
 40/tex_offset = Vector2( 0, 0 )
