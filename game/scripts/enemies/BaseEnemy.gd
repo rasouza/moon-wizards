@@ -8,10 +8,10 @@ const TYPE = preload("../types.gd")
 ### PROPRIEDADES ###########
 
 const SPEED = 100
-const KNOCKBACK = 10
+const KNOCKBACK = 15
 const ATTACK_COOLDOWN = 5
 const DAMAGE = 0
-const ATTACK_RANGE = 300
+const ATTACK_RANGE = 400
 var HP = 0
 
 var anim_up

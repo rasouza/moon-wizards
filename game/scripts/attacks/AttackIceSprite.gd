@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const DAMAGE = 2
-const DURATION = 5
+const DURATION = 1
 const TYPE = preload("../types.gd")
 
 onready var anim = get_node("Sprite/Animation")
@@ -41,7 +41,7 @@ func _ready():
 	
 func _fixed_process(delta):
 	var pos = get_pos()
-	set_pos(pos + direcao)
+	set_pos(pos + 5 * direcao)
 	
 func destruir():
 	timer.queue_free()

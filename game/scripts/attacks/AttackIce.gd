@@ -2,7 +2,7 @@ extends Object
 
 const AttackIceSprite = preload("res://game/sprites/attacks/AttackIceSprite.tscn")
 
-const INTERVAL_WAIT = 1
+const INTERVAL_WAIT = 2
 const INTERVAL_SHOT = 0.3
 
 var wizard
