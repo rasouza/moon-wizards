@@ -13,8 +13,8 @@ var HP = 100
 var type = TYPE.PLAYER
 var dir = Vector2()
 var atacando = false
-var last_anim = "walk_right"
-var active_anim = "walk_right"
+#var last_anim = "walk_right"
+#var active_anim = "walk_right"
 var active_anims = []
 var active_attack
 
@@ -60,46 +60,56 @@ func animacao(event):
 		#active_anim = "walk_right"
 		#anim.play(active_anim)
 		active_anims.push_back("walk_right")
+		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
+			anim.play(active_anims.back())
 		
 	if(event.is_action_pressed("ui_left")):
 		#last_anim = active_anim
 		#active_anim = "walk_left"
 		#anim.play(active_anim)
 		active_anims.push_back("walk_left")
+		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
+			anim.play(active_anims.back())
 		
 	if(event.is_action_pressed("ui_up")):
 		#last_anim = active_anim
 		#active_anim = "walk_up"
 		#anim.play(active_anim)
 		active_anims.push_back("walk_up")
+		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
+			anim.play(active_anims.back())
 		
 	if(event.is_action_pressed("ui_down")):
 		#last_anim = active_anim
 		#active_anim = "walk_down"
 		#anim.play(active_anim)
 		active_anims.push_back("walk_down")
+		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
+			anim.play(active_anims.back())
 		
 	if(event.is_action_released("ui_right")):
 		#active_anim = last_anim
 		#anim.play(active_anim)
 		active_anims.erase("walk_right")
+		if(not (atacando and (active_attack == attack3 or active_attack == attack4)) and not active_anims.empty()):
+			anim.play(active_anims.back())
 	if(event.is_action_released("ui_left")):
 		#active_anim = last_anim
 		#anim.play(active_anim)
 		active_anims.erase("walk_left")
+		if(not (atacando and (active_attack == attack3 or active_attack == attack4)) and not active_anims.empty()):
+			anim.play(active_anims.back())
 	if(event.is_action_released("ui_up")):
 		#active_anim = last_anim
 		#anim.play(active_anim)
 		active_anims.erase("walk_up")
+		if(not (atacando and (active_attack == attack3 or active_attack == attack4)) and not active_anims.empty()):
+			anim.play(active_anims.back())
 	if(event.is_action_released("ui_down")):
 		#active_anim = last_anim
 		#anim.play(active_anim)
 		active_anims.erase("walk_down")
-		
-	if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
-		if (active_anims.empty()):
-			anim.play("walk_right")
-		else:
+		if(not (atacando and (active_attack == attack3 or active_attack == attack4)) and not active_anims.empty()):
 			anim.play(active_anims.back())
 
 func ataque(event):
@@ -125,8 +135,10 @@ func ataque(event):
 	if (event.is_action_released("ui_attack")):
 		atacando = false
 		active_attack.stop()
-		active_anim = last_anim
-		anim.play(active_anim)
+		if (active_anims.empty()):
+			anim.play("walk_right")
+		else:
+			anim.play(active_anims.back())
 
 func _fixed_process(delta):
 	if(atacando and (active_attack == attack3 or active_attack == attack4)):
@@ -141,7 +153,7 @@ func _fixed_process(delta):
         move(motion)
 
 func _on_AnimationPlayer_finished():
-	if (anim.get_current_animation() == "attack"): anim.play(active_anim)
+	if (anim.get_current_animation() == "attack"): anim.play("walk_right")
 
 func _on_Area2D_body_enter( body ):
 	if(body.get("type") and body.type == TYPE.ENEMY):

@@ -76,7 +76,7 @@ offset = Vector2( 0, -32 )
 flip_h = true
 vframes = 8
 hframes = 8
-frame = 39
+frame = 36
 region_rect = Rect2( 0, 0, 32, 48 )
 
 [node name="Animation" type="AnimationPlayer" parent="Sprite"]
