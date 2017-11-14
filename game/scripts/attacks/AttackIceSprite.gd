@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const DAMAGE = 2
+const DAMAGE = 5
 const DURATION = 1
 const TYPE = preload("../types.gd")
 

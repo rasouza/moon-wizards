@@ -22,8 +22,8 @@ var timer
 onready var anim = get_node("Sprite/Animation")
 onready var attack1 = get_node("Attacks/Burn")
 onready var attack2 = get_node("Attacks/Barrier")
-var attack3
-var attack4
+var attack3  # raio não é Node, mas um Object que cria os Nodes
+onready var attack4 = get_node("Attacks/Lightning")
 
 func _ready():
 	active_attack = attack1
@@ -109,11 +109,16 @@ func ataque(event):
 	if (event.is_action_pressed("attack_ice") and active_attack != attack3):
 		active_attack.stop()
 		active_attack = attack3
+	if (event.is_action_pressed("attack_lightning") and active_attack != attack4):
+		active_attack.stop()
+		active_attack = attack4
 	
 	if (event.is_action_pressed("ui_attack")):
 		if(!atacando):
 			if (active_attack == attack3):
-				anim.play("attack_channel_start")
+				anim.play("attack_ice_start")
+			elif (active_attack == attack4):
+				anim.play("attack_lightning")
 			else:
 				anim.play("attack")
 		atacando = true
