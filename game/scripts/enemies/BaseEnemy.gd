@@ -23,7 +23,7 @@ var anim_right
 
 var type = TYPE.ENEMY
 var direcao = DIR.NENHUMA
-var estado = ACT.ANDANDO
+var estado = ACT.DESCANSANDO
 var dir = Vector2(0,0)
 var wizard_pos = Vector2(0,0)
 var counter = 0
@@ -43,14 +43,16 @@ func _fixed_process(delta):
 	if (player.size() != 0): wizard_pos = player[0].get_global_pos()
 	distancia = (wizard_pos - get_global_pos()).length()
 	
-	if (distancia <= ATTACK_RANGE): estado = ACT.ATACANDO
+	if (estado != ACT.PARALISADO):
+		if (distancia <= ATTACK_RANGE and !player[0].immune): 
+			estado = ACT.ATACANDO
+			atacando(delta)
+			movimento(delta)
+		else:
+			estado = ACT.DESCANSANDO
 	
-	if (estado == ACT.ATACANDO): atacando(delta)
-	if (estado == ACT.ANDANDO): andando(delta)
-	
-	movimento(delta)
 	animacao(delta)
-	
+
 func movimento(delta):
 	var motion = dir * SPEED * delta
 	move(motion)
@@ -90,6 +92,8 @@ func _on_body_enter( body ):
 
 func hit(player): 
 	player.HP -= DAMAGE
+	knockback()
+	
 func get_hit(attack):
 	if HP <= 0:
 		get_parent().remove_child(self)

@@ -1,8 +1,7 @@
 extends Node
 
 enum {
-	ANDANDO,
+	DESCANSANDO,
 	ATACANDO,
-	AFASTANDO,
 	PARALISADO,
 }

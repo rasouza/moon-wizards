@@ -13,5 +13,5 @@ func _ready():
 	anim_left = "snail_left"
 	anim_right = "snail_right"
 	
-func hit(player):
-	.hit(player)
+#func hit(player):
+#	.hit(player)

@@ -7,28 +7,30 @@ const ICE = preload("../attacks/AttackIce.gd")
 
 var SPEED
 var HP = 100
+var IMMUNE_TIME = 3
 
 #######################
 
 var type = TYPE.PLAYER
 var dir = Vector2()
 var atacando = false
-#var last_anim = "walk_right"
-#var active_anim = "walk_right"
 var active_anims = []
 var active_attack
+var immune = false
+var timer
 
 onready var anim = get_node("Sprite/Animation")
 onready var attack1 = get_node("Attacks/Burn")
 onready var attack2 = get_node("Attacks/Barrier")
 var attack3
-#onready var attack3 = get_node("Attacks/Ice")
 var attack4
 
 func _ready():
 	active_attack = attack1
 	
 	attack3 = ICE.new(self)
+	timer = Timer.new()
+	add_child(timer)
 	
 	self.set_fixed_process(true)
 	self.set_process_input(true)
@@ -56,58 +58,41 @@ func movimento(event):
 
 func animacao(event):
 	if(event.is_action_pressed("ui_right")):
-		#last_anim = active_anim
-		#active_anim = "walk_right"
-		#anim.play(active_anim)
 		active_anims.push_back("walk_right")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
 			anim.play(active_anims.back())
 		
 	if(event.is_action_pressed("ui_left")):
-		#last_anim = active_anim
-		#active_anim = "walk_left"
-		#anim.play(active_anim)
 		active_anims.push_back("walk_left")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
 			anim.play(active_anims.back())
 		
 	if(event.is_action_pressed("ui_up")):
-		#last_anim = active_anim
-		#active_anim = "walk_up"
-		#anim.play(active_anim)
 		active_anims.push_back("walk_up")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
 			anim.play(active_anims.back())
 		
 	if(event.is_action_pressed("ui_down")):
-		#last_anim = active_anim
-		#active_anim = "walk_down"
-		#anim.play(active_anim)
 		active_anims.push_back("walk_down")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
 			anim.play(active_anims.back())
 		
 	if(event.is_action_released("ui_right")):
-		#active_anim = last_anim
-		#anim.play(active_anim)
 		active_anims.erase("walk_right")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4)) and not active_anims.empty()):
 			anim.play(active_anims.back())
+	
 	if(event.is_action_released("ui_left")):
-		#active_anim = last_anim
-		#anim.play(active_anim)
 		active_anims.erase("walk_left")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4)) and not active_anims.empty()):
 			anim.play(active_anims.back())
+	
 	if(event.is_action_released("ui_up")):
-		#active_anim = last_anim
-		#anim.play(active_anim)
 		active_anims.erase("walk_up")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4)) and not active_anims.empty()):
 			anim.play(active_anims.back())
+	
 	if(event.is_action_released("ui_down")):
-		#active_anim = last_anim
-		#anim.play(active_anim)
 		active_anims.erase("walk_down")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4)) and not active_anims.empty()):
 			anim.play(active_anims.back())
@@ -116,9 +101,11 @@ func ataque(event):
 	if (event.is_action_pressed("attack_burn") and active_attack != attack1):
 		active_attack.stop()
 		active_attack = attack1
+	
 	if (event.is_action_pressed("attack_barrier") and active_attack != attack2):
 		active_attack.stop()
 		active_attack = attack2
+	
 	if (event.is_action_pressed("attack_ice") and active_attack != attack3):
 		active_attack.stop()
 		active_attack = attack3
@@ -146,7 +133,9 @@ func _fixed_process(delta):
 	else: SPEED = 100
 	var motion = dir.normalized() * SPEED * delta
 	move(motion)
-	
+
+	if (immune): bright()
+
 	if (is_colliding()):
         var n = get_collision_normal()
         motion = n.slide(motion)
@@ -156,5 +145,24 @@ func _on_AnimationPlayer_finished():
 	if (anim.get_current_animation() == "attack"): anim.play("walk_right")
 
 func _on_Area2D_body_enter( body ):
-	if(body.get("type") and body.type == TYPE.ENEMY):
+	if(!immune and body.get("type") and body.type == TYPE.ENEMY):
 		body.hit(self)
+		immunize()
+
+func bright():
+	if (is_visible()):
+		hide()
+	else:
+		show()
+
+func immunize():
+	immune = true
+	timer.set_one_shot(true)
+	timer.set_wait_time(IMMUNE_TIME)
+	timer.connect("timeout", self, "unimmune")
+	timer.start()
+
+func unimmune():
+	timer.disconnect("timeout", self, "unimmune")
+	immune = false
+	show()
