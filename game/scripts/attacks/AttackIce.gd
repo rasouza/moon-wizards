@@ -35,4 +35,11 @@ func stop():
 func disparo():
 	var ice = AttackIceSprite.instance()
 	ice.wizard = wizard
+	ice.ref_dir = get_attack_dir()
 	wizard.get_parent().add_child(ice)
+
+func get_attack_dir(): 
+	var mouse = wizard.get_global_mouse_pos()
+	var wizard_pos = wizard.get_global_pos()
+	var attack_dir = (mouse - wizard_pos).normalized()
+	return attack_dir;

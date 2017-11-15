@@ -4,9 +4,11 @@ const DAMAGE = 5
 const DURATION = 1
 const TYPE = preload("../types.gd")
 
+var wizard
+var ref_dir
+
 onready var anim = get_node("Sprite/Animation")
 var timer
-var wizard
 var direcao
 var type = TYPE.ATTACK
 var atacando = true  # sempre
@@ -14,9 +16,6 @@ var atacando = true  # sempre
 func _ready():
 	set_fixed_process(true)
 	set_pos(wizard.get_pos())
-	var mouse = get_global_mouse_pos()
-	var wizard_pos = wizard.get_global_pos()
-	var ref_dir = (mouse - wizard_pos).normalized()
 	var angulo = atan2(ref_dir.x, ref_dir.y) - 1.5
 	var y = sin(angulo)
 	var x = sqrt(1 - y*y)

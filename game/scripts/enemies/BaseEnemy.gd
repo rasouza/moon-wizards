@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const SmokeSprite = preload("res://game/sprites/attacks/Smoke.tscn")
+
 const DIR = preload("../directions.gd")
 const ACT = preload("../actions.gd")
 const TYPE = preload("../types.gd")
@@ -96,5 +98,14 @@ func hit(player):
 	
 func get_hit(attack):
 	if HP <= 0:
+		var smoke = SmokeSprite.instance()
+		smoke.set_pos(get_pos())
+		get_parent().add_child(smoke)
 		get_parent().remove_child(self)
-	
+		var array = Array()
+		array.append(smoke)
+		smoke.get_node("AnimationPlayer").connect("finished", self, "destroy_smoke", array)
+		smoke.get_node("AnimationPlayer").play("fluff")
+
+func destroy_smoke(smoke):
+	smoke.get_parent().remove_child(smoke)

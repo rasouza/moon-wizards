@@ -16,6 +16,7 @@ var dir = Vector2()
 var atacando = false
 var active_anims = []
 var active_attack
+var attack_anim
 var immune = false
 var timer
 
@@ -38,8 +39,8 @@ func _ready():
 
 func _input(event):
 	movimento(event)
-	animacao(event)
 	ataque(event)
+	animacao(event)
 
 func movimento(event):
 	
@@ -52,11 +53,37 @@ func movimento(event):
 	if(event.is_action_released("ui_left")): dir -= Vector2(-1, 0)
 	if(event.is_action_released("ui_up")): dir -= Vector2(0, -1)
 	if(event.is_action_released("ui_down")): dir -= Vector2(0, 1)
-		
+	
 	if(event.is_action_released("ui_select")):
-			get_node("/root/global").goto_scene("res://game/scenes/cena_teste.tscn")
+		get_node("/root/global").goto_scene("res://game/scenes/cena_teste.tscn")
 
 func animacao(event):
+	#if (atacando):
+	#	var dir = active_attack.get_attack_dir()
+	#	var ang = atan2(dir.x, dir.y)
+	#	var animacao
+		
+	#	if ang <= -3*PI/4:
+	#		animacao = "walk_up"
+	#	elif ang <= -PI/4:
+	#		animacao = "walk_left"
+	#	elif ang <= PI/4:
+	#		animacao = "walk_down"
+	#	elif ang <= 3*PI/4:
+	#		animacao = "walk_right"
+	#	else:
+	#		animacao = "walk_up"
+		
+	#	if (attack_anim != animacao):
+			
+	#		print("Vou andar na direção do ataque")
+			
+	#		attack_anim = animacao
+	#		active_anims.push_back(animacao)
+	#		anim.play(active_anims.back())
+	
+	#else:
+	
 	if(event.is_action_pressed("ui_right")):
 		active_anims.push_back("walk_right")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
@@ -109,11 +136,15 @@ func ataque(event):
 	if (event.is_action_pressed("attack_ice") and active_attack != attack3):
 		active_attack.stop()
 		active_attack = attack3
+		
 	if (event.is_action_pressed("attack_lightning") and active_attack != attack4):
 		active_attack.stop()
 		active_attack = attack4
 	
 	if (event.is_action_pressed("ui_attack")):
+		
+		print("\n\nComeçando um ataque")
+		
 		if(!atacando):
 			if (active_attack == attack3):
 				anim.play("attack_ice_start")
@@ -125,7 +156,11 @@ func ataque(event):
 		active_attack.attack()
 	
 	if (event.is_action_released("ui_attack")):
+		
+		print("Finalizando ataque")
+		
 		atacando = false
+		attack_anim = null
 		active_attack.stop()
 		if (active_anims.empty()):
 			anim.play("walk_right")

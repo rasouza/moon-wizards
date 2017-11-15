@@ -32,6 +32,8 @@ func _fixed_process(delta):
 
 func attack():
 	atacando = true
+	var mouse = get_global_mouse_pos()
+	attack_dir = (mouse - wizard_pos).normalized()
 	show()
 	anim.play("attack")
 
@@ -48,3 +50,5 @@ func _on_body_enter(body):
 	if (atacando and body.get("type") and body.type == TYPE.ENEMY): 
 		hit(body)
 		body.get_hit(self)
+
+func get_attack_dir(): return attack_dir
