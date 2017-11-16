@@ -11,7 +11,7 @@ const TYPE = preload("../types.gd")
 
 const SPEED = 100
 const KNOCKBACK = 15
-const ATTACK_COOLDOWN = 5
+const ATTACK_COOLDOWN = 0
 const DAMAGE = 0
 const ATTACK_RANGE = 400
 var HP = 0
@@ -51,6 +51,7 @@ func _fixed_process(delta):
 			atacando(delta)
 			movimento(delta)
 		else:
+			if (estado == ACT.ATACANDO): reset()
 			estado = ACT.DESCANSANDO
 	
 	animacao(delta)
@@ -80,6 +81,7 @@ func animacao(delta):
 
 # Depois do knockback o inimigo entra em cooldown
 func knockback():
+	if (estado == ACT.ATACANDO): reset()
 	estado = ACT.PARALISADO
 	tween.interpolate_method(self, "move", Vector2(0,0), -dir * KNOCKBACK, 0.05, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	tween.start()
@@ -106,6 +108,9 @@ func get_hit(attack):
 		array.append(smoke)
 		smoke.get_node("AnimationPlayer").connect("finished", self, "destroy_smoke", array)
 		smoke.get_node("AnimationPlayer").play("fluff")
+
+func reset():
+	estado = estado
 
 func destroy_smoke(smoke):
 	smoke.get_parent().remove_child(smoke)

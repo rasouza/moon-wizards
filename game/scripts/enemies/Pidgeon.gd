@@ -4,6 +4,7 @@ extends "BaseEnemy.gd"
 
 const DAMAGE = 4
 const SPEED = 200
+const ATTACK_COOLDOWN = 5
 
 #######################
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://game/tileset/TilesCenario.tres" type="TileSet" id=1]
 [ext_resource path="res://game/sprites/TilesWater.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://game/sprites/enemies/Pidgeon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/sprites/enemies/Beetle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/sprites/enemies/Snail.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/sprites/enemies/Small_Worm.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 
@@ -173,6 +174,10 @@ transform/pos = Vector2( -180.484, 1916 )
 
 transform/pos = Vector2( -180.484, 1916 )
 
+[node name="Pidgeon3" parent="TilesObjects" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -236.424, 76.9406 )
+
 [node name="Beetle" parent="TilesObjects" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1174.53, 77.5319 )
@@ -329,8 +334,8 @@ transform/pos = Vector2( 3852.43, 2924.97 )
 
 transform/pos = Vector2( 4276.4, 3521.33 )
 
-[node name="Pidgeon 2" parent="TilesObjects" instance=ExtResource( 4 )]
+[node name="Small_Worm" parent="TilesObjects" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( -328.929, -44.1327 )
+transform/pos = Vector2( -331.267, -108.063 )
 
 
