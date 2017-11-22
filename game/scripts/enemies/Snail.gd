@@ -32,8 +32,7 @@ func attack():
 
 func guspe():
 	timer.stop()
-	HP = 0
-	get_hit()
+	#HP = 0
 
 func reset():
 	timer.stop()
