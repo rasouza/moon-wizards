@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://game/scripts/attacks/AttackBarrier.gd" type="Script" id=1]
 [ext_resource path="res://art/effects/shield.png" type="Texture" id=2]
+[ext_resource path="res://game/sound/barrier.smp" type="Sample" id=3]
+[ext_resource path="res://game/sound/barrier-knock.smp" type="Sample" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -27,6 +29,18 @@ extents = Vector2( 10, 9.19252 )
 
 [sub_resource type="SampleLibrary" id=3]
 
+samples/attack = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/barrier-knock = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
 
 [node name="Barrier" type="KinematicBody2D"]
 
