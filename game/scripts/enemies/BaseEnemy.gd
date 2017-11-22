@@ -108,6 +108,7 @@ func get_hit(attack):
 		array.append(smoke)
 		smoke.get_node("AnimationPlayer").connect("finished", self, "destroy_smoke", array)
 		smoke.get_node("AnimationPlayer").play("fluff")
+		smoke.get_node("SamplePlayer").play("fluff")
 
 func reset():
 	estado = estado

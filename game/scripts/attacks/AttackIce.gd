@@ -37,6 +37,7 @@ func disparo():
 	ice.wizard = wizard
 	ice.ref_dir = get_attack_dir()
 	wizard.get_parent().add_child(ice)
+	ice.sound.play("ice")
 
 func get_attack_dir(): 
 	var mouse = wizard.get_global_mouse_pos()

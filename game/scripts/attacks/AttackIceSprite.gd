@@ -8,6 +8,7 @@ var wizard
 var ref_dir
 
 onready var anim = get_node("Sprite/Animation")
+onready var sound = get_node("SamplePlayer")
 var timer
 var direcao
 var type = TYPE.ATTACK

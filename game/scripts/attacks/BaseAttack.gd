@@ -16,6 +16,7 @@ var wizard_pos = Vector2(0,0)
 
 onready var player = get_tree().get_nodes_in_group("player")
 onready var anim = get_node("Sprite/Animation")
+onready var sound = get_node("SamplePlayer")
 
 func _ready():
 	get_node("Area2D").connect("body_enter", self, "_on_body_enter") # Colisor
@@ -36,10 +37,12 @@ func attack():
 	attack_dir = (mouse - wizard_pos).normalized()
 	show()
 	anim.play("attack")
+	if (sound): sound.play("attack")
 
 func stop():
 	hide()
 	anim.stop()
+	if (sound): sound.stop_all()
 	atacando = false
 
 # Particularidades do ataque a ser implementado

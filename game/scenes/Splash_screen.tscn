@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://game/scripts/scenes/Splash_screen.gd" type="Script" id=1]
 [ext_resource path="res://art/gui/buttonStock1.png" type="Texture" id=2]
 [ext_resource path="res://art/gui/buttonStock1d.png" type="Texture" id=3]
 [ext_resource path="res://art/gui/buttonStock1h.png" type="Texture" id=4]
+[ext_resource path="res://game/sound/splash.ogg" type="AudioStream" id=5]
 
 [node name="splash screen" type="Panel"]
 
@@ -72,6 +73,17 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 5 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="pressed" from="PLAY_button" to="." method="_on_PLAY_button_pressed"]
 
