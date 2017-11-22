@@ -8,4 +8,4 @@ func _ready():
 
 
 func _on_PLAY_button_pressed():
-	get_node("/root/global").goto_scene("res://game/scenes/Cenario2.tscn")
+	Transition.fade_to("res://game/scenes/CenarioPlanicie.tscn")
