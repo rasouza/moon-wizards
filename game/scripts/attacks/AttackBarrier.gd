@@ -5,3 +5,4 @@ func attack_loop(delta):
 
 func hit(enemy):
 	enemy.knockback()
+	sound.play("barrier-knock")
