@@ -19,6 +19,7 @@ var active_attack
 var attack_anim
 var immune = false
 var timer
+var delta_count = 0
 
 onready var anim = get_node("Sprite/Animation")
 onready var attack1 = get_node("Attacks/Burn")
@@ -143,8 +144,6 @@ func ataque(event):
 	
 	if (event.is_action_pressed("ui_attack")):
 		
-		print("\n\nComeçando um ataque")
-		
 		if(!atacando):
 			if (active_attack == attack3):
 				anim.play("attack_ice_start")
@@ -157,8 +156,6 @@ func ataque(event):
 	
 	if (event.is_action_released("ui_attack")):
 		
-		print("Finalizando ataque")
-		
 		atacando = false
 		attack_anim = null
 		active_attack.stop()
@@ -168,13 +165,13 @@ func ataque(event):
 			anim.play(active_anims.back())
 
 func _fixed_process(delta):
+	if (immune): blink(delta)
+	
 	if(atacando and (active_attack == attack3 or active_attack == attack4)):
 		SPEED = 0
 	else: SPEED = 100
 	var motion = dir.normalized() * SPEED * delta
 	move(motion)
-
-	if (immune): bright()
 
 	if (is_colliding()):
         var n = get_collision_normal()
@@ -189,14 +186,14 @@ func _on_Area2D_body_enter( body ):
 		body.hit(self)
 		immunize()
 
-func bright():
-	if (is_visible()):
-		hide()
-	else:
-		show()
+func blink(delta):
+	delta_count += delta
+	if(int(delta_count*10)%1 == 0 and get_node("Sprite").is_visible()): get_node("Sprite").hide()
+	if(int(delta_count*10)%2 == 0 and not get_node("Sprite").is_visible()): get_node("Sprite").show()
 
 func immunize():
 	immune = true
+	
 	timer.set_one_shot(true)
 	timer.set_wait_time(IMMUNE_TIME)
 	timer.connect("timeout", self, "unimmune")
