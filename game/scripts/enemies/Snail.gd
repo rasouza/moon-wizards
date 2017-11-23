@@ -2,6 +2,7 @@ extends "BaseEnemy.gd"
 
 ### PROPRIEDADES #####
 
+#const AttackSpitSprite = preload("res://game/sprites/attacks/AttackSpitSprite.tscn")
 const DAMAGE = 4
 
 var aproximando
@@ -23,16 +24,31 @@ func movimento(delta):
 	var motion = aproximando * dir * SPEED * delta
 	move(motion)
 
-func attack():	
-	add_child(timer)
-	timer.set_one_shot(true)
-	timer.set_wait_time(3)
-	timer.connect("timeout", self, "guspe")
-	timer.start()
+func attack():
+	print("\n\nFucking testing")
+	print(HP)
+	tween.interpolate_callback(self, 3, "guspe")
+	#tween.start()
+	#tween.set_repeat(true)
+	
+	#add_child(timer)
+	#timer.set_one_shot(false)
+	#timer.set_wait_time(3)
+	#timer.connect("timeout", self, "guspe")
+	#timer.start()
 
 func guspe():
-	timer.stop()
-	#HP = 0
+	print(HP)
+	HP = 0
+	print(HP)
+#	disparo()
+
+#func disparo():
+#	var guspe = AttackSpitSprite.instance()
+#	guspe.wizard = wizard
+#	guspe.ref_dir = dir
+#	wizard.get_parent().add_child(guspe)
+#	sample_player.play("shot")
 
 func reset():
 	timer.stop()

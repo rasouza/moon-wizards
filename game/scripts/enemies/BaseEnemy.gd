@@ -88,6 +88,7 @@ func knockback():
 	tween.interpolate_callback(self, ATTACK_COOLDOWN, "attack")
 	
 func attack():
+	print("\n\nCaralho testing")
 	estado = ACT.ATACANDO
 
 func _on_body_enter( body ): 
