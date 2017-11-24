@@ -2,9 +2,13 @@ extends "BaseEnemy.gd"
 
 ### PROPRIEDADES #####
 
+const WarmBall = preload("res://game/sprites/enemies/attacks/WarmBall.tscn")
+
 const DAMAGE = 4
+const BALL_INTERVAL = 2
 
 var aproximando
+var ball_time = 0
 
 #######################
 
@@ -16,8 +20,18 @@ func _ready():
 	anim_right = "small_worm_right"
 
 func movimento(delta):
-	if (distancia < ATTACK_RANGE - 100): aproximando = -1
-	else: aproximando = 1
+	if (distancia < ATTACK_RANGE - 100): 
+		aproximando = -1
+		ball_time += delta
+	else: 
+		aproximando = 1
+		ball_time = 0
+		
+	if (ball_time > BALL_INTERVAL):
+		ball_time = 0
+		var ball = WarmBall.instance()
+		get_parent().add_child(ball)
+		ball.set_pos(get_pos())
 	
 	var motion = aproximando * dir * SPEED * delta
 	move(motion)

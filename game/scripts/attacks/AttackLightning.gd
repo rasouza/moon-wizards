@@ -69,16 +69,10 @@ func _fixed_process(delta):
 			enemies[i].get_hit(self)
 
 func _on_body_enter(body):
-	
-	print("Entrou: " + body.get_name())
-	
 	if (body.type == TYPE.ENEMY):
 		enemies[body.get_name()] = body
 		
 
 func _on_body_exit(body):
-	
-	print("Saiu: " + body.get_name())
-	
 	if (body.type == TYPE.ENEMY):
 		enemies.erase(body.get_name())

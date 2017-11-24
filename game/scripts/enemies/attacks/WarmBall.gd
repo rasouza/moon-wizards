@@ -1,0 +1,48 @@
+extends KinematicBody2D
+
+const TYPE = preload("../../types.gd")
+
+### PROPRIEDADES #####
+
+const DAMAGE = 4
+const SPEED = 300
+const DURATION = 2
+
+onready var anim = get_node("Sprite/Animation")
+onready var player = get_tree().get_nodes_in_group("player")[0]
+
+var type = TYPE.ATTACK
+var atacando = true
+var timer
+var direction = null
+
+#######################
+
+func _ready():
+	get_node("Area2D").connect("body_enter", self, "hit")
+	set_fixed_process(true)
+	anim.play("spin")
+	timer = Timer.new()
+	add_child(timer)
+	timer.set_one_shot(true)
+	timer.set_wait_time(DURATION)
+	timer.connect("timeout", self, "destroy")
+	timer.start()
+	
+func _fixed_process(delta):
+	if (direction == null): 
+		direction = (player.get_pos() - get_pos()).normalized()
+		
+	var inc = direction * SPEED * delta
+	set_pos(get_pos() + inc)
+	
+func hit(body):
+	print("colidiu ... " + body.get_name())
+	if (body == player):
+		player.HP -= DAMAGE
+		destroy()
+
+func destroy():
+	timer.queue_free()
+	hide()
+	queue_free()
