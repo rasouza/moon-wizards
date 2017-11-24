@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://game/tileset/TilesCenario.tres" type="TileSet" id=1]
 [ext_resource path="res://game/sprites/TilesWater.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://game/sprites/enemies/Beetle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/sprites/enemies/Snail.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/sprites/enemies/Small_Worm.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/sprites/indicators/wizard_hp.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -337,5 +338,7 @@ transform/pos = Vector2( 4276.4, 3521.33 )
 [node name="Small_Worm" parent="TilesObjects" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -331.267, -108.063 )
+
+[node name="WizardHP" parent="." instance=ExtResource( 8 )]
 
 

@@ -88,11 +88,10 @@ func knockback():
 	tween.interpolate_callback(self, ATTACK_COOLDOWN, "attack")
 	
 func attack():
-	print("\n\nCaralho testing")
 	estado = ACT.ATACANDO
 
 func _on_body_enter( body ): 
-	if (body.type == TYPE.ATTACK and body.atacando): 
+	if (body.get("type") != null and body.type == TYPE.ATTACK and body.atacando): 
 		get_hit(body)
 
 func hit(player): 
