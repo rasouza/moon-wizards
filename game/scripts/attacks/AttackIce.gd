@@ -1,7 +1,7 @@
 extends Object
 
 const AttackIceSprite = preload("res://game/sprites/attacks/AttackIceSprite.tscn")
-const IcePrepareSound = preload("res://game/sound/ice-prepare.smp")
+const IcePrepareSound = preload("res://game/sound/prepare.smp")
 const IceShotSound = preload("res://game/sound/ice.smp")
 
 const INTERVAL_WAIT = 2

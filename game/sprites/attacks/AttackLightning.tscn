@@ -2,8 +2,9 @@
 
 [ext_resource path="res://game/scripts/attacks/AttackLightning.gd" type="Script" id=1]
 [ext_resource path="res://art/effects/raio.png" type="Texture" id=2]
-[ext_resource path="res://game/sound/ice-prepare.smp" type="Sample" id=3]
+[ext_resource path="res://game/sound/prepare.smp" type="Sample" id=3]
 [ext_resource path="res://game/sound/thunder.smp" type="Sample" id=4]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 
