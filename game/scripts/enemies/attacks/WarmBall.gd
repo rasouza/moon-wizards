@@ -11,10 +11,11 @@ const DURATION = 2
 onready var anim = get_node("Sprite/Animation")
 onready var player = get_tree().get_nodes_in_group("player")[0]
 
-var type = TYPE.ATTACK
+var type = TYPE.ENEMY
 var atacando = true
 var timer
 var direction = null
+var HP = -1  # só para seguir a interface do inimigo
 
 #######################
 
@@ -44,10 +45,7 @@ func hit(body):
 	if (body.get_name() == "Barrier" and player.atacando == true and player.active_attack == player.get_node("Attacks/Barrier")):
 		destroy()
 
-#func hit(player):
-#	print("colidiu ... com player!")
-#	player.HP -= DAMAGE
-#	destroy()
+func get_hit(body): pass  # só para seguir a interface do inimigo
 
 func destroy():
 	timer.queue_free()

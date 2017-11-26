@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://game/scripts/characters/wizard.gd" type="Script" id=1]
 [ext_resource path="res://art/characters/wizard.png" type="Texture" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://game/sprites/attacks/AttackBarrier.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/sprites/attacks/AttackLightning.tscn" type="PackedScene" id=10]
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -10, 15, 0, 15, 5, 25, 0, 30, -10, 30, -15, 25 )
@@ -112,12 +112,17 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 11.0384
 
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -10, 15, 0, 15, 5, 25, 0, 30, -10, 30, -15, 25 )
+
 [node name="Wizard" type="KinematicBody2D" groups=[
 "player",
 ]]
 
 input/pickable = false
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -188,6 +193,9 @@ input/pickable = true
 shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1.44295, 0, 0, 1.61653, 0.616386, 1.83844 )
 shapes/0/trigger = false
+shapes/1/shape = SubResource( 7 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
@@ -201,6 +209,13 @@ transform/scale = Vector2( 1.44295, 1.61653 )
 shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
+
+[node name="CollisionPolygon2D1" type="CollisionPolygon2D" parent="Area2D"]
+
+build_mode = 0
+polygon = Vector2Array( -15, 25, -10, 30, 0, 30, 5, 25, 0, 15, -10, 15 )
+shape_range = Vector2( 1, 1 )
+trigger = false
 
 [connection signal="body_enter" from="Area2D" to="." method="_on_Area2D_body_enter"]
 

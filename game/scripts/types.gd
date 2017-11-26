@@ -6,4 +6,5 @@ enum {
 	PLAYER,
 	ATTACK,
 	WALL,
+	ITEM
 }
