@@ -20,6 +20,7 @@ var attack_anim
 var immune = false
 var timer
 var delta_count = 0
+var alive = true
 
 onready var anim = get_node("Sprite/Animation")
 onready var attack1 = get_node("Attacks/Burn")
@@ -39,9 +40,10 @@ func _ready():
 	anim.play("walk_right")
 
 func _input(event):
-	movimento(event)
-	ataque(event)
-	animacao(event)
+	if (alive):
+		movimento(event)
+		ataque(event)
+		animacao(event)
 
 func movimento(event):
 	
@@ -163,7 +165,7 @@ func ataque(event):
 			anim.play(active_anims.back())
 
 func _fixed_process(delta):
-	if (immune): blink(delta)
+	if (immune and alive): blink(delta)
 	
 	if(atacando and (active_attack == attack3 or active_attack == attack4)):
 		SPEED = 0
@@ -182,7 +184,15 @@ func _on_AnimationPlayer_finished():
 func _on_Area2D_body_enter( body ):
 	if(!immune and body.get("type") and body.type == TYPE.ENEMY):
 		body.hit(self)
-		immunize()
+		if(HP <= 0):
+			alive = false
+			SPEED = 0
+			immune = true
+			atacando = false
+			attack_anim = null
+			active_attack.stop()
+			anim.play("die")
+		else: immunize()
 
 func blink(delta):
 	delta_count += delta
@@ -200,4 +210,8 @@ func immunize():
 func unimmune():
 	timer.disconnect("timeout", self, "unimmune")
 	immune = false
+	if(not get_node("Sprite").is_visible()): get_node("Sprite").show()
 	show()
+
+func GameOver():
+	Transition.fade_to("res://game/scenes/GameOver.tscn")

@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const TYPE = preload("../types.gd")
 const INTERVAL_WAIT = 2
-const INTERVAL_SHOT = 1
+const INTERVAL_SHOT = 0.5
 const DAMAGE = 10
 
 onready var anim = get_node("Sprite/Animation")
