@@ -53,4 +53,6 @@ func get_attack_dir():
 	var mouse = wizard.get_global_mouse_pos()
 	var wizard_pos = wizard.get_global_pos()
 	var attack_dir = (mouse - wizard_pos).normalized()
-	return attack_dir;
+	return attack_dir
+
+func get_name(): return "Ice"

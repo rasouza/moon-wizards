@@ -5,7 +5,6 @@
 [ext_resource path="res://game/sound/prepare.smp" type="Sample" id=3]
 [ext_resource path="res://game/sound/thunder.smp" type="Sample" id=4]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -48,7 +47,7 @@ tracks/0/keys = {
 [sub_resource type="SampleLibrary" id=4]
 
 samples/prepare = {
-"db": 10.0,
+"db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 3 )
