@@ -1,5 +1,4 @@
-extends Panel
+extends Node2D
 
 func _ready():
-	# Initialization here
-	pass
+	get_node("TextIndicator").show_text("I wonder if I will get some peace to write...")

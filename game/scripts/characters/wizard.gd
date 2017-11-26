@@ -21,12 +21,15 @@ var immune = false
 var timer
 var delta_count = 0
 var alive = true
+var books_read = 0
 
 onready var anim = get_node("Sprite/Animation")
 onready var attack1 = get_node("Attacks/Burn")
 onready var attack2 = get_node("Attacks/Barrier")
 var attack3  # raio não é Node, mas um Object que cria os Nodes
 onready var attack4 = get_node("Attacks/Lightning")
+
+onready var text_indicator = get_tree().get_nodes_in_group("text_indicator")[0]
 
 func _ready():
 	active_attack = attack1
@@ -59,32 +62,6 @@ func movimento(event):
 	
 
 func animacao(event):
-	#if (atacando):
-	#	var dir = active_attack.get_attack_dir()
-	#	var ang = atan2(dir.x, dir.y)
-	#	var animacao
-		
-	#	if ang <= -3*PI/4:
-	#		animacao = "walk_up"
-	#	elif ang <= -PI/4:
-	#		animacao = "walk_left"
-	#	elif ang <= PI/4:
-	#		animacao = "walk_down"
-	#	elif ang <= 3*PI/4:
-	#		animacao = "walk_right"
-	#	else:
-	#		animacao = "walk_up"
-		
-	#	if (attack_anim != animacao):
-			
-	#		print("Vou andar na direção do ataque")
-			
-	#		attack_anim = animacao
-	#		active_anims.push_back(animacao)
-	#		anim.play(active_anims.back())
-	
-	#else:
-	
 	if(event.is_action_pressed("ui_right")):
 		active_anims.push_back("walk_right")
 		if(not (atacando and (active_attack == attack3 or active_attack == attack4))):
@@ -183,7 +160,10 @@ func _on_AnimationPlayer_finished():
 
 func _on_Area2D_body_enter( body ):
 	if(!immune and body.get("type") and body.type == TYPE.ENEMY):
+		var old_hp = HP
 		body.hit(self)
+		if (old_hp > 50 and HP < 50):
+			text_indicator.show_text("I'm getting tired!")
 		if(HP <= 0):
 			alive = false
 			SPEED = 0
