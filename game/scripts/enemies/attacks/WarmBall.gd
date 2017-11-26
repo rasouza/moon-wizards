@@ -35,12 +35,19 @@ func _fixed_process(delta):
 		
 	var inc = direction * SPEED * delta
 	set_pos(get_pos() + inc)
-	
+
 func hit(body):
 	print("colidiu ... " + body.get_name())
 	if (body == player):
 		player.HP -= DAMAGE
 		destroy()
+	if (body.get_name() == "Barrier" and player.atacando == true and player.active_attack == player.get_node("Attacks/Barrier")):
+		destroy()
+
+#func hit(player):
+#	print("colidiu ... com player!")
+#	player.HP -= DAMAGE
+#	destroy()
 
 func destroy():
 	timer.queue_free()

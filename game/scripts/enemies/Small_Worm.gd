@@ -5,7 +5,7 @@ extends "BaseEnemy.gd"
 const WarmBall = preload("res://game/sprites/enemies/attacks/WarmBall.tscn")
 
 const DAMAGE = 4
-const BALL_INTERVAL = 2
+const BALL_INTERVAL = 4
 
 var aproximando
 var ball_time = 0
@@ -22,10 +22,12 @@ func _ready():
 func movimento(delta):
 	if (distancia < ATTACK_RANGE - 100): 
 		aproximando = -1
-		ball_time += delta
+		#ball_time += delta
 	else: 
 		aproximando = 1
-		ball_time = 0
+		#ball_time = 0
+		
+	ball_time += delta
 		
 	if (ball_time > BALL_INTERVAL):
 		ball_time = 0
