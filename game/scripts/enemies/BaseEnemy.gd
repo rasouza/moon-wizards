@@ -9,12 +9,13 @@ const TYPE = preload("../types.gd")
 
 ### PROPRIEDADES ###########
 
-const SPEED = 100
 const KNOCKBACK = 15
 const ATTACK_COOLDOWN = 0
 const DAMAGE = 0
 const ATTACK_RANGE = 400
+var SPEED = 100
 var HP = 0
+var immune = false
 
 var anim_up
 var anim_down
@@ -99,16 +100,17 @@ func hit(player):
 	knockback()
 	
 func get_hit(attack):
-	if HP <= 0:
-		var smoke = SmokeSprite.instance()
-		smoke.set_pos(get_pos())
-		get_parent().add_child(smoke)
-		get_parent().remove_child(self)
-		var array = Array()
-		array.append(smoke)
-		smoke.get_node("AnimationPlayer").connect("finished", self, "destroy_smoke", array)
-		smoke.get_node("AnimationPlayer").play("fluff")
-		smoke.get_node("SamplePlayer").play("fluff")
+	if !immune:
+		if (HP <= 0):
+			var smoke = SmokeSprite.instance()
+			smoke.set_pos(get_pos())
+			get_parent().add_child(smoke)
+			get_parent().remove_child(self)
+			var array = Array()
+			array.append(smoke)
+			smoke.get_node("AnimationPlayer").connect("finished", self, "destroy_smoke", array)
+			smoke.get_node("AnimationPlayer").play("fluff")
+			smoke.get_node("SamplePlayer").play("fluff")
 
 func reset():
 	estado = estado

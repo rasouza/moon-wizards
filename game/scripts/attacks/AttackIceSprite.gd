@@ -50,5 +50,6 @@ func destruir():
 
 func _on_body_enter(body):
 	if (body.get("type") and body.type == TYPE.ENEMY): 
+		print("inimigo levou dano: " + body.get_name())
 		body.HP -= DAMAGE
 		body.get_hit(self)

@@ -11,7 +11,7 @@
 [ext_resource path="res://game/sprites/attacks/AttackBarrier.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/sprites/attacks/AttackLightning.tscn" type="PackedScene" id=10]
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -10, 15, 0, 15, 5, 25, 0, 30, -10, 30, -15, 25 )
@@ -117,7 +117,7 @@ height = 11.0384
 ]]
 
 input/pickable = false
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
