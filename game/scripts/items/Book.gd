@@ -10,10 +10,15 @@ var type = TYPE.ITEM
 var texts = [
 	# textos dos livros: colocar aspas: \" dentro da string
 	# falas do Mago: basta apenas colocar os textos
-	"\"And with the power of the sword, the little Duncan realised that he was nothing.\"",
-	"\"Nothing compares to the force of the love, and it can win even fire, ice and thunders.\"",
-	"That's a great book! I'm getting inspired.",
-	"What kind of horrible book is this? If I keep to read this, I'll unlearn to write.",
+	#"\n\"And with the power of the sword, the little Duncan realised that he was nothing.\"",
+	#"\n\"Nothing compares to the force of the love, and it can win even fire, ice and thunders.\"",
+	#"\nThat's a great book! I'm getting inspired.",
+	#"\nWhat kind of horrible book is this? If I keep to read this, I'll unlearn to write.",
+	
+	["\n\"Tyranny\",\n\n by Orgeo Gwell...", "\nI once heard that much blood was shed over the ideas of this book..."],
+	["\n\"A Fantasy in the Sun\",\n\n by L. Branf Kaum...", "\nAh, a fistful of joy for all ages. I won't mind some of that"],
+	["\n\"Mind and Monster\",\n\n by Llesha May...", "\nThought-provoking, I assume. You've captured my interest, Llesha"],
+	["\n\"The Tale of Duncan and the Sword of Fate\",\n\n by Mehoros...", "\nEpics carry some sort of power in their words, don't they?"],
 ]
 
 func _ready():
@@ -29,4 +34,4 @@ func _on_body_enter( body ):
 			return
 		
 		queue_free()
-		text_indicator.show_text(texts[randi() % texts.size()])
+		text_indicator.show_text_list(texts[randi() % texts.size()])

@@ -1,4 +1,4 @@
 extends Node2D
 
 func _ready():
-	get_node("TextIndicator").show_text("I wonder if I will get some peace to write...")
+	get_node("TextIndicator").show_text("\nI wonder if I'll find... \n\nfind some place to write...")

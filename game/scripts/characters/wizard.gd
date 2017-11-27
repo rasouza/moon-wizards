@@ -47,6 +47,7 @@ func _input(event):
 		movimento(event)
 		ataque(event)
 		animacao(event)
+		if (event.is_action_pressed("ui_accept")): text_indicator.next_text()
 
 func movimento(event):
 	
@@ -163,7 +164,7 @@ func _on_Area2D_body_enter( body ):
 		var old_hp = HP
 		body.hit(self)
 		if (old_hp > 50 and HP < 50):
-			text_indicator.show_text("I'm getting tired!")
+			text_indicator.show_text("\nI don't feel so well...")
 		if(HP <= 0):
 			alive = false
 			SPEED = 0

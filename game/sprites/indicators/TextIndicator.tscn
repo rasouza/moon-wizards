@@ -27,6 +27,5 @@ custom_fonts/normal_font = ExtResource( 3 )
 bbcode/enabled = false
 bbcode/bbcode = ""
 visible_characters = -1
-percent_visible = 1.0
 
 
