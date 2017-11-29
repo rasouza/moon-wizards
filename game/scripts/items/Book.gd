@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const TYPE = preload("../types.gd")
-const MUST_READ = 1  # qtd de livros
+const MUST_READ = 4  # qtd de livros
 
 onready var text_indicator = get_tree().get_nodes_in_group("text_indicator")[0]
 onready var player = get_tree().get_nodes_in_group("player")[0]
