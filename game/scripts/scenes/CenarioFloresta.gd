@@ -9,4 +9,4 @@ func _ready():
 	get_node("TextIndicator").show_text_list(show_list)
 	
 	
-	get_node("TilesObjects/Book").scene_path = "res://game/scenes/Floresta.tscn"
+	get_node("TilesObjects/Book").scene_path = "res://game/scenes/Writing.tscn"
