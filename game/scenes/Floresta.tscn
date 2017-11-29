@@ -188,19 +188,23 @@ transform/pos = Vector2( 1252.67, 1567.19 )
 
 [node name="Book5" parent="TilesObjects" instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 406.75, -282.19 )
+visibility/visible = false
+transform/pos = Vector2( 1036.27, -263.735 )
 
 [node name="Book6" parent="TilesObjects" instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 494.923, -265.785 )
+visibility/visible = false
+transform/pos = Vector2( 948.093, -327.301 )
 
 [node name="Book7" parent="TilesObjects" instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 417.003, -181.713 )
+visibility/visible = false
+transform/pos = Vector2( 978.851, -298.594 )
 
 [node name="Book8" parent="TilesObjects" instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 496.974, -114.045 )
+visibility/visible = false
+transform/pos = Vector2( 1124.44, -284.24 )
 
 [node name="Bat" parent="TilesObjects" instance=ExtResource( 9 )]
 
