@@ -20,26 +20,44 @@ var texts = [
 	["\n\"Tyranny\",\n\n by Orgeo Gwell...", "\nI once heard that much blood was shed over the ideas of this book..."],
 	["\n\"A Fantasy in the Sun\",\n\n by L. Branf Kaum...", "\nAh, a fistful of joy for all ages. I won't mind some of that"],
 	["\n\"Mind and Monster\",\n\n by Llesha May...", "\nThought-provoking, I assume. You've captured my interest, Llesha"],
-	["\n\"The Tale of Duncan and the Sword of Fate\",\n\n by Mehoros...", "\nEpics carry some sort of power in their words, don't they?"],
+	["\n\"The Tale of Duncan and the Sword of Fate\",\n\n by Mehoros...", "\nEpics carry some sort of power in their words, don't they?", ""],
 	["\n\"Tyranny\",\n\n by Orgeo Gwell...", "\nI once heard that much blood was shed over the ideas of this book..."],
 	["\n\"A Fantasy in the Sun\",\n\n by L. Branf Kaum...", "\nAh, a fistful of joy for all ages. I won't mind some of that"],
 	["\n\"Mind and Monster\",\n\n by Llesha May...", "\nThought-provoking, I assume. You've captured my interest, Llesha"],
-	["\n\"The Tale of Duncan and the Sword of Fate\",\n\n by Mehoros...", "\nEpics carry some sort of power in their words, don't they?"],
+	["\n\"The Tale of Duncan and the Sword of Fate\",\n\n by Mehoros...", "\nEpics carry some sort of power in their words, don't they?", ""],
 ]
+
+var hate_text = ["\n\"Tyranny\",\n\n by Orgeo Gwell...", "\nI once heard that much blood was shed over the ideas of this book..."]
+var love_text =["\n\"A Fantasy in the Sun\",\n\n by L. Branf Kaum...", "\nAh, a fistful of joy for all ages. I won't mind some of that"]
+var logic_text = ["\n\"Mind and Monster\",\n\n by Llesha May...", "\nThought-provoking, I assume. You've captured my interest, Llesha"]
+var power_text = ["\n\"The Tale of Duncan and the Sword of Fate\",\n\n by Mehoros...", "\nEpics carry some sort of power in their words, don't they?"]
 
 func _ready():
 	get_node("Area2D").connect("body_enter", self, "_on_body_enter")
 	
 func _on_body_enter( body ): 
 	if (body.get("type") != null and body.type == TYPE.PLAYER):
-		player.books_read += 1
+		Transition.books_read += 1
 		hide()
 		
-		if (player.books_read == MUST_READ):
-			Transition.fade_to(scene_path)
-			return
+		#if (player.books_read == MUST_READ):
+		#	Transition.fade_to(scene_path)
+		#	return
 		
 		queue_free()
 		#text_indicator.show_text_list(texts[randi() % texts.size()])
-		text_indicator.show_text_list(texts.front())
-		texts.pop_front()
+		#text_indicator.show_text_list(texts[i])
+		
+		if (Transition.i == 0 or Transition.i == 4):
+			text_indicator.show_text_list(hate_text)
+			Transition.i += 1
+		elif (Transition.i == 1 or Transition.i == 5):
+			text_indicator.show_text_list(love_text)
+			Transition.i += 1
+		elif (Transition.i == 2 or Transition.i == 6):
+			text_indicator.show_text_list(logic_text)
+			Transition.i += 1
+		elif (Transition.i == 3 or Transition.i == 7):
+			text_indicator.show_text_list(power_text)
+			Transition.i += 1
+		#texts.pop_front()

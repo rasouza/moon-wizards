@@ -167,47 +167,47 @@ points = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 [sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 24, 32, -32, 0, 32, 0, 32, 32 )
+points = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 32, 64, -32, 64, -32, 32, -24, 32, 32, 60 )
+points = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -32, 64, -32, 60, 32, 28, 32, 64 )
+points = Vector2Array( 24, 32, -32, 0, 32, 0, 32, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -32, 28, -32, 0, 32, 0, -24, 28 )
+points = Vector2Array( 32, 64, -32, 64, -32, 32, -24, 32, 32, 60 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -16, -16, -12, -16, -16, 12 )
+points = Vector2Array( -32, 64, -32, 60, 32, 28, 32, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 16, 12, 12, -16, 16, -16 )
+points = Vector2Array( -32, 28, -32, 0, 32, 0, -24, 28 )
 
 [sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
+points = Vector2Array( -16, -16, -12, -16, -16, 12 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 24, -40, 32, -32, 32, 24, 24, 32, -24, 32, -32, 24, -32, -32, -24, -40 )
+points = Vector2Array( 16, 12, 12, -16, 16, -16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
+points = Vector2Array( 24, -40, 32, -32, 32, 24, 24, 32, -24, 32, -32, 24, -32, -32, -24, -40 )
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 

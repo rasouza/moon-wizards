@@ -21,7 +21,6 @@ var immune = false
 var timer
 var delta_count = 0
 var alive = true
-var books_read = 0
 
 onready var anim = get_node("Sprite/Animation")
 onready var attack1 = get_node("Attacks/Burn")

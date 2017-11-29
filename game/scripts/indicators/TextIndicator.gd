@@ -36,6 +36,11 @@ func show_text_list(show_list):
 func next_text():
 	if (text_list.empty()):
 		hide()
+		if (Transition.books_read == Transition.ir_floresta):
+			Transition.fade_to("res://game/scenes/Floresta.tscn")
+			Transition.books_read = 5
+		if (Transition.books_read == Transition.ir_fim):
+			Transition.fade_to("res://game/scenes/Writing.tscn")
 	else:
 		contents.clear()
 		contents.add_text(text_list[0])

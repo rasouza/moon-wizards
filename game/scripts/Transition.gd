@@ -1,7 +1,12 @@
 extends CanvasLayer
 
 # STORE THE SCENE PATH
+const ir_floresta = 4
+const ir_fim = 9
+
 var path = ""
+var i = 0
+var books_read = 0
 var humor
 
 

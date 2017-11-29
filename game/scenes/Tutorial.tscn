@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=19 format=1]
 
 [ext_resource path="res://game/scripts/scenes/Tutorial.gd" type="Script" id=1]
 [ext_resource path="res://game/tileset/TilesCenario.tres" type="TileSet" id=2]
@@ -11,11 +11,12 @@
 [ext_resource path="res://game/sprites/enemies/Beetle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/sprites/enemies/Pidgeon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/sprites/enemies/Snail.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game/scripts/level_change.gd" type="Script" id=12]
-[ext_resource path="res://game/sprites/indicators/wizard_hp.tscn" type="PackedScene" id=13]
-[ext_resource path="res://game/sound/The Forest and the Trees.ogg" type="AudioStream" id=14]
-[ext_resource path="res://game/sprites/indicators/SelectedAttack.tscn" type="PackedScene" id=15]
-[ext_resource path="res://game/sprites/indicators/TextIndicator.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game/sprites/enemies/Small_Worm.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game/scripts/level_change.gd" type="Script" id=13]
+[ext_resource path="res://game/sprites/indicators/wizard_hp.tscn" type="PackedScene" id=14]
+[ext_resource path="res://game/sound/The Forest and the Trees.ogg" type="AudioStream" id=15]
+[ext_resource path="res://game/sprites/indicators/SelectedAttack.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game/sprites/indicators/TextIndicator.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -193,7 +194,6 @@ transform/pos = Vector2( 4060.41, 1966.48 )
 [node name="Beetle" parent="TilesObjects" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 793.384, -243.363 )
-collision/mask = 7
 
 [node name="Pidgeon" parent="TilesObjects" instance=ExtResource( 10 )]
 
@@ -202,7 +202,10 @@ transform/pos = Vector2( 1142.21, -244.42 )
 [node name="Snail" parent="TilesObjects" instance=ExtResource( 11 )]
 
 transform/pos = Vector2( 1455.03, -256.86 )
-collision/mask = 7
+
+[node name="Small_Worm" parent="TilesObjects" instance=ExtResource( 12 )]
+
+transform/pos = Vector2( 1777.68, -247.434 )
 
 [node name="level_change" type="KinematicBody2D" parent="TilesObjects"]
 
@@ -211,7 +214,7 @@ input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 12 )
+script/script = ExtResource( 13 )
 
 [node name="Area2D" type="Area2D" parent="TilesObjects/level_change"]
 
@@ -234,11 +237,11 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="WizardHP" parent="." instance=ExtResource( 13 )]
+[node name="WizardHP" parent="." instance=ExtResource( 14 )]
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 14 )
+stream/stream = ExtResource( 15 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -247,11 +250,11 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="SelectedAttack" parent="." instance=ExtResource( 15 )]
+[node name="SelectedAttack" parent="." instance=ExtResource( 16 )]
 
 [node name="TextIndicator" parent="." groups=[
 "text_indicator",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 17 )]
 
 visibility/visible = true
 transform/pos = Vector2( 2278.7, 1625.25 )
