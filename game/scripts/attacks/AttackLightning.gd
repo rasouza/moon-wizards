@@ -64,10 +64,6 @@ func stop():
 
 func _fixed_process(delta):
 	if (!atacando): return
-	
-	print(enemies)
-	
-	#if (not enemies.empty()):
 	for e in enemies:
 		e.HP -= DAMAGE
 		e.get_hit(self)
@@ -75,9 +71,7 @@ func _fixed_process(delta):
 func _on_body_enter(body):
 	if (body.type == TYPE.ENEMY and body.HP >= 0):
 		enemies.append(body)
-		print(body.get_name() + " entrou")
 
 func _on_body_exit(body):
 	if (body.type == TYPE.ENEMY):
 		enemies.erase(body)
-		print(body.get_name() + " saiu")
