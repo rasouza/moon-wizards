@@ -19,6 +19,10 @@ var texts = [
 	["\n\"A Fantasy in the Sun\",\n\n by L. Branf Kaum...", "\nAh, a fistful of joy for all ages. I won't mind some of that"],
 	["\n\"Mind and Monster\",\n\n by Llesha May...", "\nThought-provoking, I assume. You've captured my interest, Llesha"],
 	["\n\"The Tale of Duncan and the Sword of Fate\",\n\n by Mehoros...", "\nEpics carry some sort of power in their words, don't they?"],
+	["\n\"Tyranny\",\n\n by Orgeo Gwell...", "\nI once heard that much blood was shed over the ideas of this book..."],
+	["\n\"A Fantasy in the Sun\",\n\n by L. Branf Kaum...", "\nAh, a fistful of joy for all ages. I won't mind some of that"],
+	["\n\"Mind and Monster\",\n\n by Llesha May...", "\nThought-provoking, I assume. You've captured my interest, Llesha"],
+	["\n\"The Tale of Duncan and the Sword of Fate\",\n\n by Mehoros...", "\nEpics carry some sort of power in their words, don't they?"],
 ]
 
 func _ready():

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://game/scripts/scenes/Writing.gd" type="Script" id=1]
-[ext_resource path="res://art/gui/buttonStock1.png" type="Texture" id=2]
-[ext_resource path="res://art/gui/buttonStock1d.png" type="Texture" id=3]
-[ext_resource path="res://art/gui/buttonStock1h.png" type="Texture" id=4]
-[ext_resource path="res://game/sound/splash.ogg" type="AudioStream" id=5]
+[ext_resource path="res://game/sound/splash.ogg" type="AudioStream" id=2]
+[ext_resource path="res://art/gui/buttonStock1.png" type="Texture" id=3]
+[ext_resource path="res://art/gui/buttonStock1d.png" type="Texture" id=4]
+[ext_resource path="res://art/gui/buttonStock1h.png" type="Texture" id=5]
 
 [node name="writing_scene" type="Panel"]
 
@@ -18,66 +18,9 @@ margin/right = 1027.0
 margin/bottom = 602.0
 script/script = ExtResource( 1 )
 
-[node name="PLAY_button" type="TextureButton" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 341.0
-margin/top = 373.0
-margin/right = 641.0
-margin/bottom = 573.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 2 )
-textures/pressed = ExtResource( 3 )
-textures/hover = ExtResource( 4 )
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="title" type="Label" parent="."]
-
-rect/rotation = 0.138778
-rect/scale = Vector2( 7, 7 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 3.0
-margin/top = 79.0
-margin/right = 148.0
-margin/bottom = 110.0
-text = "Escreva aqui uma 
-história bonita..."
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="PLAY" type="Label" parent="."]
-
-rect/scale = Vector2( 4, 4 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 395.0
-margin/top = 385.0
-margin/right = 445.0
-margin/bottom = 430.0
-text = "PLAY"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 5 )
+stream/stream = ExtResource( 2 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -86,6 +29,183 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[connection signal="pressed" from="PLAY_button" to="." method="_on_PLAY_button_pressed"]
+[node name="question" type="Label" parent="."]
+
+rect/rotation = 0.138778
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 113.0
+margin/top = 7.0
+margin/right = 383.0
+margin/bottom = 57.0
+text = "The book that inspired me the most was..."
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HATE_button" type="TextureButton" parent="."]
+
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 25.0
+margin/top = 150.0
+margin/right = 325.0
+margin/bottom = 350.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="HATE" type="Label" parent="."]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 125.0
+margin/top = 125.0
+margin/right = 225.0
+margin/bottom = 175.0
+text = "Tyranny"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LOVE_button" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 25.0
+margin/top = 250.0
+margin/right = 325.0
+margin/bottom = 450.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
+[node name="LOVE" type="Label" parent="."]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 200.0
+margin/top = 225.0
+margin/right = 329.0
+margin/bottom = 275.0
+text = "A Fantasy in the Sun"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LOGIC_button" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 25.0
+margin/top = 350.0
+margin/right = 325.0
+margin/bottom = 550.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
+[node name="LOGIC" type="Label" parent="."]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 200.0
+margin/top = 325.0
+margin/right = 316.0
+margin/bottom = 375.0
+text = "Mind and Monster"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="POWER_button" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 25.0
+margin/top = 450.0
+margin/right = 325.0
+margin/bottom = 650.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
+[node name="POWER" type="Label" parent="."]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 200.0
+margin/top = 425.0
+margin/right = 462.0
+margin/bottom = 475.0
+text = "The Tale of Duncan and the Sword of Fate"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="HATE_button" to="." method="_on_HATE_button_pressed"]
+
+[connection signal="pressed" from="LOVE_button" to="." method="_on_LOVE_button_pressed"]
+
+[connection signal="pressed" from="LOGIC_button" to="." method="_on_LOGIC_button_pressed"]
+
+[connection signal="pressed" from="POWER_button" to="." method="_on_POWER_button_pressed"]
 
 

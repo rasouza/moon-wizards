@@ -2,6 +2,7 @@ extends CanvasLayer
 
 # STORE THE SCENE PATH
 var path = ""
+var humor
 
 
 # PUBLIC FUNCTION. CALLED WHENEVER YOU WANT TO CHANGE SCENE
