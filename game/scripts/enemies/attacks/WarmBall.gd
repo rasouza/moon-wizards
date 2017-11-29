@@ -50,3 +50,5 @@ func destroy():
 	timer.queue_free()
 	hide()
 	queue_free()
+	
+func knockback(): pass
