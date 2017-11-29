@@ -8,4 +8,4 @@ func _ready():
 
 
 func _on_YES_button_pressed():
-	Transition.fade_to("res://game/scenes/CenarioPlanicie.tscn")
+	Transition.fade_to("res://game/scenes/Splash_screen.tscn")
