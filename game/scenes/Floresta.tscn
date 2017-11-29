@@ -11,7 +11,7 @@
 [ext_resource path="res://game/sprites/enemies/Bat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/sprites/enemies/Spider.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/sprites/indicators/wizard_hp.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game/sound/The Forest and the Trees.ogg" type="AudioStream" id=12]
+[ext_resource path="res://game/sound/Evening Melodrama.ogg" type="AudioStream" id=12]
 [ext_resource path="res://game/sprites/indicators/SelectedAttack.tscn" type="PackedScene" id=13]
 [ext_resource path="res://game/sprites/indicators/TextIndicator.tscn" type="PackedScene" id=14]
 
