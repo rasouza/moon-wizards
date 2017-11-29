@@ -8,5 +8,9 @@ func _ready():
 	
 	get_node("TextIndicator").show_text_list(show_list)
 	
+	var path = "res://game/scenes/Floresta.tscn"
 	
-	get_node("TilesObjects/Book").scene_path = "res://game/scenes/Floresta.tscn"
+	get_node("TilesObjects/Book").scene_path = path
+	get_node("TilesObjects/Book 2").scene_path = path
+	get_node("TilesObjects/Book 3").scene_path = path
+	get_node("TilesObjects/Book 4").scene_path = path
