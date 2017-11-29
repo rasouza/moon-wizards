@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://game/scripts/scenes/Controls.gd" type="Script" id=1]
+[ext_resource path="res://game/sprites/characters/wizard.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/sprites/indicators/SelectedAttack.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/sprites/indicators/TextIndicator.tscn" type="PackedScene" id=4]
 
 [node name="Panel" type="Panel"]
 
@@ -53,5 +56,17 @@ Press Space to advance dialogue,
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Wizard" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 865.156, 93.5304 )
+
+[node name="SelectedAttack" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 56.7863, 547.821 )
+
+[node name="TextIndicator" parent="." groups=[
+"text_indicator",
+] instance=ExtResource( 4 )]
 
 
