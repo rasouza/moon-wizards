@@ -3,6 +3,7 @@ extends Panel
 func _ready():
 	pass
 
+
 func _on_HATE_button_pressed():
 	Transition.humor = "HATE"
 	Transition.fade_to("res://game/scenes/Chosen_Writing.tscn")

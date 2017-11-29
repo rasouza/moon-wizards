@@ -11,7 +11,7 @@ var type = TYPE.ATTACK
 var timer
 var area2d
 var atacando = false
-var enemies = {}
+var enemies = Array()
 
 func _ready():
 	set_fixed_process(true)
@@ -21,7 +21,7 @@ func _ready():
 	area2d.connect("body_exit", self, "_on_body_exit")
 	
 func attack():
-	enemies = {}
+	#enemies = Array()
 	add_child(timer)
 	timer.set_one_shot(true)
 	timer.set_wait_time(INTERVAL_WAIT)
@@ -52,6 +52,7 @@ func parar_ataque():
 	hide()
 	anim.stop()
 	attack()  # recomeça
+	enemies = Array()
 
 func stop():
 	timer.disconnect("timeout", self, "comecar_ataque")
@@ -61,24 +62,16 @@ func stop():
 	anim.stop()
 	atacando = false
 
-func _fixed_process(delta):	
+func _fixed_process(delta):
 	if (!atacando): return
-	
-	if (not enemies.empty()):
-		for i in enemies:
-			print("Atingindo: " + enemies[i].get_name())
-			enemies[i].HP -= DAMAGE
-			enemies[i].get_hit(self)
+	for e in enemies:
+		e.HP -= DAMAGE
+		e.get_hit(self)
 
 func _on_body_enter(body):
-	if (body.type == TYPE.ENEMY and body.HP >= 0):  # só pra não cuspir muitas msgs
-		enemies[body.get_name()] = body
-		
-		print(body.get_name() + " entrou no raio")
-		
+	if (body.type == TYPE.ENEMY and body.HP >= 0):
+		enemies.append(body)
 
 func _on_body_exit(body):
 	if (body.type == TYPE.ENEMY):
-		enemies.erase(body.get_name())
-
-		print(body.get_name() + " saiu do raio")
+		enemies.erase(body)
