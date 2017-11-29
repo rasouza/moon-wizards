@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=1]
 
-[ext_resource path="res://game/scripts/scenes/CenarioPlanicie.gd" type="Script" id=1]
+[ext_resource path="res://game/scripts/scenes/CenarioFloresta.gd" type="Script" id=1]
 [ext_resource path="res://game/tileset/TilesCenario.tres" type="TileSet" id=2]
 [ext_resource path="res://game/sprites/TilesWater.gd" type="Script" id=3]
 [ext_resource path="res://game/sprites/characters/wizard.tscn" type="PackedScene" id=4]
@@ -392,11 +392,11 @@ transform/pos = Vector2( 4176.03, -279.077 )
 
 [node name="Book 3" parent="TilesObjects" instance=ExtResource( 10 )]
 
-transform/pos = Vector2( -497.907, 1662.59 )
+transform/pos = Vector2( 254.743, 3382.33 )
 
 [node name="Book 4" parent="TilesObjects" instance=ExtResource( 11 )]
 
-transform/pos = Vector2( 4060.41, 1966.48 )
+transform/pos = Vector2( 2915.45, 1308.99 )
 
 [node name="WizardHP" parent="." instance=ExtResource( 12 )]
 

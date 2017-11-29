@@ -272,7 +272,7 @@ points = Vector2Array( -16, -48, 0, -64, 16, -48 )
 [sub_resource type="ConvexPolygonShape2D" id=26]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, -16, -28, -32, 0, -48, 24, -32 )
+points = Vector2Array( -26.6968, -32.0975, -16, -54, 14, -54, 24, -34, 4, -14, -6, -14 )
 
 [sub_resource type="ConvexPolygonShape2D" id=27]
 
@@ -1201,7 +1201,6 @@ trigger = false
 
 [node name="arvore2" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 796, 4 )
 texture = ExtResource( 76 )
 offset = Vector2( 0, -75 )
@@ -1222,7 +1221,7 @@ bounce = 0.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="arvore2/StaticBody2D"]
 
 build_mode = 0
-polygon = Vector2Array( 0, -16, -28, -32, 0, -48, 24, -32 )
+polygon = Vector2Array( -26.6968, -32.0975, -16, -54, 14, -54, 24, -34, 4, -14, -6, -14 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
