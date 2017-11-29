@@ -56,10 +56,10 @@ func movimento(event):
 	if(event.is_action_pressed("ui_up")): dir.y = -1
 	if(event.is_action_pressed("ui_down")): dir.y = 1
 		
-	if(event.is_action_released("ui_right")): dir.x = 0
-	if(event.is_action_released("ui_left")): dir.x = 0
-	if(event.is_action_released("ui_up")): dir.y = 0
-	if(event.is_action_released("ui_down")): dir.y = 0
+	if(event.is_action_released("ui_right") and dir.x == 1): dir.x = 0
+	if(event.is_action_released("ui_left") and dir.x == -1): dir.x = 0
+	if(event.is_action_released("ui_up") and dir.y == -1): dir.y = 0
+	if(event.is_action_released("ui_down") and dir.y == 1): dir.y = 0
 	
 
 func animacao(event):
