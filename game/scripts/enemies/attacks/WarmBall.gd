@@ -38,7 +38,6 @@ func _fixed_process(delta):
 	set_pos(get_pos() + inc)
 
 func hit(body):
-	print("colidiu ... " + body.get_name())
 	if (body == player):
 		player.HP -= DAMAGE
 		destroy()

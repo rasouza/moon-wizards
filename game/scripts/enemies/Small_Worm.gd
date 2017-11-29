@@ -57,21 +57,24 @@ func get_hit(attack):
 			smoke.get_node("AnimationPlayer").connect("finished", self, "destroy_smoke", array)
 			smoke.get_node("AnimationPlayer").play("fluff")
 			smoke.get_node("SamplePlayer").play("fluff")
-	else:
-		immune = true
-		aux_SPEED = SPEED
-		SPEED = 0
-		animacao.play("immunize")
-		
-		timer.set_one_shot(true)
-		timer.set_wait_time(IMMUNE_TIME)
-		timer.connect("timeout", self, "unimmune")
-		timer.start()
+		else:
+			HP -= attack.DAMAGE
+			immune = true
+			aux_SPEED = SPEED
+			SPEED = 0
+			animacao.play("immunize")
+			
+			timer.set_one_shot(true)
+			timer.set_wait_time(IMMUNE_TIME)
+			timer.connect("timeout", self, "unimmune")
+			timer.start()
 		
 func unimmune():
 	timer.disconnect("timeout", self, "unimmune")
 	immune = false
 	animacao.play("unimmunize")
+	
+	print("Minhoquinha não está mais imune")
 
 func look_player():
 	var angulo = dir.snapped(Vector2(1,1)) # Gruda o vetor no grid

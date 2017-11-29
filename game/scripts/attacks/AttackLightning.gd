@@ -9,14 +9,16 @@ onready var anim = get_node("Sprite/Animation")
 onready var sound = get_node("SamplePlayer")
 var type = TYPE.ATTACK
 var timer
+var area2d
 var atacando = false
 var enemies = {}
 
 func _ready():
 	set_fixed_process(true)
 	timer = Timer.new()
-	get_node("Area2D").connect("body_enter", self, "_on_body_enter")
-	get_node("Area2D").connect("body_exit", self, "_on_body_exit")
+	area2d = get_node("Area2D")
+	area2d.connect("body_enter", self, "_on_body_enter")
+	area2d.connect("body_exit", self, "_on_body_exit")
 	
 func attack():
 	enemies = {}
@@ -69,10 +71,14 @@ func _fixed_process(delta):
 			enemies[i].get_hit(self)
 
 func _on_body_enter(body):
-	if (body.type == TYPE.ENEMY):
+	if (body.type == TYPE.ENEMY and body.HP >= 0):  # só pra não cuspir muitas msgs
 		enemies[body.get_name()] = body
+		
+		print(body.get_name() + " entrou no raio")
 		
 
 func _on_body_exit(body):
 	if (body.type == TYPE.ENEMY):
 		enemies.erase(body.get_name())
+
+		print(body.get_name() + " saiu do raio")
