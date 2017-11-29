@@ -34,4 +34,6 @@ func _on_body_enter( body ):
 			return
 		
 		queue_free()
-		text_indicator.show_text_list(texts[randi() % texts.size()])
+		#text_indicator.show_text_list(texts[randi() % texts.size()])
+		text_indicator.show_text_list(texts.front())
+		texts.pop_front()

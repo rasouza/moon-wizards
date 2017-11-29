@@ -6,4 +6,4 @@ func _ready():
 func _input(event):
 	if (event.is_action_pressed("ui_accept")):
 		#print("apertou algo!")
-		Transition.fade_to("res://game/scenes/CenarioPlanicie.tscn")
+		Transition.fade_to("res://game/scenes/Tutorial.tscn")
