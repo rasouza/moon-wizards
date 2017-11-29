@@ -1,21 +1,20 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=16 format=1]
 
-[ext_resource path="res://game/scripts/scenes/CenarioPlanicie.gd" type="Script" id=1]
+[ext_resource path="res://game/scripts/scenes/CenarioFloresta.gd" type="Script" id=1]
 [ext_resource path="res://game/tileset/TilesCenario.tres" type="TileSet" id=2]
 [ext_resource path="res://game/sprites/TilesWater.gd" type="Script" id=3]
 [ext_resource path="res://game/sprites/characters/wizard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/sprites/enemies/Pidgeon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/sprites/enemies/Beetle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/sprites/enemies/Snail.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game/sprites/enemies/Small_Worm.tscn" type="PackedScene" id=8]
-[ext_resource path="res://game/sprites/items/Book1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://game/sprites/items/Book2.tscn" type="PackedScene" id=10]
-[ext_resource path="res://game/sprites/items/Book3.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game/sprites/items/Book4.tscn" type="PackedScene" id=12]
-[ext_resource path="res://game/sprites/indicators/wizard_hp.tscn" type="PackedScene" id=13]
-[ext_resource path="res://game/sound/The Forest and the Trees.ogg" type="AudioStream" id=14]
-[ext_resource path="res://game/sprites/indicators/SelectedAttack.tscn" type="PackedScene" id=15]
-[ext_resource path="res://game/sprites/indicators/TextIndicator.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game/sprites/items/Book1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/sprites/items/Book2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/sprites/items/Book3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/sprites/items/Book4.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/sprites/indicators/wizard_hp.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game/sound/The Forest and the Trees.ogg" type="AudioStream" id=13]
+[ext_resource path="res://game/sprites/indicators/SelectedAttack.tscn" type="PackedScene" id=14]
+[ext_resource path="res://game/sprites/indicators/TextIndicator.tscn" type="PackedScene" id=15]
 
 [node name="Node2D" type="Node2D"]
 
@@ -383,31 +382,27 @@ collision/mask = 7
 transform/pos = Vector2( 4276.4, 3521.33 )
 collision/mask = 7
 
-[node name="Small_Worm" parent="TilesObjects" instance=ExtResource( 8 )]
-
-transform/pos = Vector2( -331.267, -108.063 )
-
-[node name="Book" parent="TilesObjects" instance=ExtResource( 9 )]
+[node name="Book" parent="TilesObjects" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 4500, 3500 )
 
-[node name="Book 2" parent="TilesObjects" instance=ExtResource( 10 )]
+[node name="Book 2" parent="TilesObjects" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 4176.03, -279.077 )
 
-[node name="Book 3" parent="TilesObjects" instance=ExtResource( 11 )]
+[node name="Book 3" parent="TilesObjects" instance=ExtResource( 10 )]
 
-transform/pos = Vector2( -497.907, 1662.59 )
+transform/pos = Vector2( 254.743, 3382.33 )
 
-[node name="Book 4" parent="TilesObjects" instance=ExtResource( 12 )]
+[node name="Book 4" parent="TilesObjects" instance=ExtResource( 11 )]
 
-transform/pos = Vector2( 4060.41, 1966.48 )
+transform/pos = Vector2( 2915.45, 1308.99 )
 
-[node name="WizardHP" parent="." instance=ExtResource( 13 )]
+[node name="WizardHP" parent="." instance=ExtResource( 12 )]
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 14 )
+stream/stream = ExtResource( 13 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -416,11 +411,11 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="SelectedAttack" parent="." instance=ExtResource( 15 )]
+[node name="SelectedAttack" parent="." instance=ExtResource( 14 )]
 
 [node name="TextIndicator" parent="." groups=[
 "text_indicator",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2278.7, 1625.25 )
 

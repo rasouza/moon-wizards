@@ -5,6 +5,8 @@ const MUST_READ = 4  # qtd de livros
 
 onready var text_indicator = get_tree().get_nodes_in_group("text_indicator")[0]
 onready var player = get_tree().get_nodes_in_group("player")[0]
+var scene_path = "res://game/scenes/Writing.tscn"
+
 
 var type = TYPE.ITEM
 var texts = [
@@ -34,7 +36,7 @@ func _on_body_enter( body ):
 		hide()
 		
 		if (player.books_read == MUST_READ):
-			Transition.fade_to("res://game/scenes/Writing.tscn")
+			Transition.fade_to(scene_path)
 			return
 		
 		queue_free()

@@ -60,6 +60,11 @@ func _fixed_process(delta):
 func movimento(delta):
 	var motion = dir * SPEED * delta
 	move(motion)
+	
+	if (is_colliding()):
+        var n = get_collision_normal()
+        motion = n.slide(motion)
+        move(motion)
 
 func atacando(delta): dir = (wizard_pos - get_global_pos()).normalized()
 func andando(delta): pass
